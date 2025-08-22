@@ -1,7 +1,7 @@
 # Making Augment Support Claude Code Agent Automation
 
 ## Overview
-Your `.augment/agents` directory contains 22 specialized research agents designed for Claude Code automation. These agents use YAML frontmatter configuration and can be adapted to work with Augment's system.
+Your current directory contains 22 specialized research agents designed for Claude Code automation. These agents use YAML frontmatter configuration and can be adapted to work with Augment's system.
 
 ## Current Agent Structure Analysis
 
@@ -73,7 +73,7 @@ import re
 from pathlib import Path
 
 class AugmentAgentLoader:
-    def __init__(self, agents_dir=".augment/agents"):
+    def __init__(self, agents_dir="."):
         self.agents_dir = Path(agents_dir)
         self.agents = {}
         self.load_agents()
@@ -297,7 +297,7 @@ Create an Augment configuration file that maps your research workflow:
 agents:
   research_workflow:
     enabled: true
-    agent_directory: ".augment/agents"
+    agent_directory: "."
     auto_selection: true
     
   triggers:

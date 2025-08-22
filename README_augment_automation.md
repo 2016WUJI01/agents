@@ -1,7 +1,7 @@
 # Augment Agent Automation System
 
 ## Overview
-This system enables Augment to use your 22 specialized research agents from `.augment/agents` for automated research workflows. The agents are designed for comprehensive academic research support from ideation to publication.
+This system enables Augment to use your 22 specialized research agents from the current directory for automated research workflows. The agents are designed for comprehensive academic research support from ideation to publication.
 
 ## Quick Start
 
@@ -149,7 +149,7 @@ Modify Augment to automatically:
 ## Customization
 
 ### Adding New Agents
-1. Create new `.md` file in `.augment/agents/`
+1. Create new `.md` file in the appropriate research department directory
 2. Follow the YAML frontmatter format:
 ```markdown
 ---
@@ -162,7 +162,7 @@ Your detailed system prompt here...
 ```
 
 ### Modifying Existing Agents
-1. Edit the agent file in `.augment/agents/`
+1. Edit the agent file in the appropriate research department directory
 2. Modify system prompt or tools as needed
 3. Reload with `python augment_agent_integration.py --list-agents`
 
