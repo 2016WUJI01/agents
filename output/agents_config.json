@@ -1,0 +1,336 @@
+{
+  "metadata": {
+    "generated_at": "2025-08-23T10:02:23.682005",
+    "agents_directory": ".",
+    "total_agents": 23
+  },
+  "agents": {
+    "collaboration-coordinator": {
+      "name": "collaboration-coordinator",
+      "description": "Use this agent when managing research collaborations, facilitating team communication, or coordinating multi-institutional research projects. This agent specializes in collaboration management, communication facilitation, and partnership coordination for research teams. Examples:\\n\\n<example>\\nContext: Setting up a multi-institutional research collaboration\\nuser: \"I'm leading a research project with collaborators from 4 different universities across 3 countries. How do I coordinate this effectively?\"\\nassistant: \"International multi-institutional collaborations require structured coordination. Let me use the collaboration-coordinator agent to establish communication protocols and coordination systems.\"\\n<commentary>\\nMulti-institutional collaborations need clear governance structures and communication systems to function effectively.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Managing industry-academic partnerships\\nuser: \"We're partnering with a pharmaceutical company for our clinical research. How do we manage the different expectations and timelines?\"\\nassistant: \"Industry-academic partnerships require careful balance of different priorities. I'll use the collaboration-coordinator agent to establish partnership frameworks that work for both sectors.\"\\n<commentary>\\nIndustry-academic collaborations must balance academic freedom with commercial interests and timelines.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Coordinating interdisciplinary research teams\\nuser: \"My team includes computer scientists, psychologists, and clinicians. We're struggling with communication and different research cultures\"\\nassistant: \"Interdisciplinary teams need bridges between different research cultures. I'll use the collaboration-coordinator agent to facilitate cross-disciplinary communication and understanding.\"\\n<commentary>\\nInterdisciplinary collaboration requires understanding and bridging different methodologies, terminologies, and research cultures.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Managing remote research collaboration\\nuser: \"Our research team is distributed globally and we're having trouble staying coordinated and maintaining momentum\"\\nassistant: \"Remote collaboration requires intentional coordination strategies. I'll use the collaboration-coordinator agent to establish systems that keep distributed teams connected and productive.\"\\n<commentary>\\nRemote research collaboration needs structured communication and coordination to maintain team cohesion and productivity.\\n</commentary>\\n</example>",
+      "category": "Research Operations",
+      "color": "purple",
+      "tools": [
+        "Read",
+        "Write",
+        "MultiEdit",
+        "WebSearch",
+        "WebFetch"
+      ],
+      "file_path": "research-operations/collaboration-coordinator.md"
+    },
+    "research-project-manager": {
+      "name": "research-project-manager",
+      "description": "Use this agent when managing complex research projects, coordinating research teams, or organizing multi-phase research initiatives. This agent specializes in research project planning, timeline management, and team coordination for academic research. Examples:\\n\\n<example>\\nContext: Managing a multi-year research grant\\nuser: \"I have a 3-year NIH grant with multiple aims, collaborators, and deliverables. I need help organizing and tracking everything\"\\nassistant: \"Multi-year grants require systematic project management. Let me use the research-project-manager agent to create a comprehensive project plan with milestones and tracking systems.\"\\n<commentary>\\nLarge research grants need structured project management to ensure deliverables are met on time and within budget.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Coordinating a multi-site research study\\nuser: \"I'm leading a clinical trial across 5 different hospitals with different IRBs and protocols. How do I keep everything coordinated?\"\\nassistant: \"Multi-site studies require careful coordination and communication. I'll use the research-project-manager agent to establish coordination protocols and tracking systems.\"\\n<commentary>\\nMulti-site research requires standardized protocols and clear communication channels across institutions.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Managing research team workflows\\nuser: \"My research team has graduate students, postdocs, and collaborators all working on different aspects of the same project\"\\nassistant: \"Research teams need clear role definition and workflow coordination. I'll use the research-project-manager agent to organize team responsibilities and communication.\"\\n<commentary>\\nResearch teams require clear coordination to avoid duplication and ensure all aspects of the project are covered.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Planning dissertation research timeline\\nuser: \"I need to plan my dissertation research timeline including data collection, analysis, and writing phases\"\\nassistant: \"Dissertation planning requires realistic timeline management. I'll use the research-project-manager agent to create a feasible timeline with built-in flexibility.\"\\n<commentary>\\nDissertation research needs careful timeline planning to balance thoroughness with completion deadlines.\\n</commentary>\\n</example>",
+      "category": "Research Operations",
+      "color": "navy",
+      "tools": [
+        "Read",
+        "Write",
+        "MultiEdit",
+        "WebSearch",
+        "WebFetch"
+      ],
+      "file_path": "research-operations/research-project-manager.md"
+    },
+    "ethics-advisor": {
+      "name": "ethics-advisor",
+      "description": "Use this agent when navigating research ethics issues, preparing IRB applications, or ensuring ethical compliance throughout research projects. This agent specializes in research ethics, regulatory compliance, and responsible research practices. Examples:\\n\\n<example>\\nContext: Preparing an IRB application for human subjects research\\nuser: \"I'm designing a study involving interviews with vulnerable populations and need help with the IRB application\"\\nassistant: \"Research with vulnerable populations requires special ethical considerations. Let me use the ethics-advisor agent to help you address all ethical concerns and prepare a comprehensive IRB application.\"\\n<commentary>\\nVulnerable populations require enhanced protections and careful consideration of risks, benefits, and consent processes.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Addressing ethical concerns in data collection\\nuser: \"I'm collecting sensitive personal data for my research. What ethical considerations do I need to address?\"\\nassistant: \"Sensitive data collection raises important privacy and confidentiality concerns. I'll use the ethics-advisor agent to help you develop appropriate safeguards and ethical protocols.\"\\n<commentary>\\nSensitive data requires robust privacy protections and clear protocols for data handling and storage.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Navigating conflicts of interest\\nuser: \"I have a potential conflict of interest in my research because I work for a company that could benefit from the results\"\\nassistant: \"Conflicts of interest require careful management and transparency. I'll use the ethics-advisor agent to help you develop appropriate disclosure and management strategies.\"\\n<commentary>\\nConflicts of interest must be identified, disclosed, and managed to maintain research integrity and public trust.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Ensuring ethical AI research practices\\nuser: \"I'm developing an AI system for healthcare applications. What ethical considerations should I address?\"\\nassistant: \"AI in healthcare raises complex ethical issues around bias, transparency, and patient safety. I'll use the ethics-advisor agent to help you address these ethical challenges.\"\\n<commentary>\\nAI research requires consideration of algorithmic bias, transparency, accountability, and potential societal impacts.\\n</commentary>\\n</example>",
+      "category": "Research Operations",
+      "color": "green",
+      "tools": [
+        "Read",
+        "Write",
+        "MultiEdit",
+        "WebSearch",
+        "WebFetch"
+      ],
+      "file_path": "research-operations/ethics-advisor.md"
+    },
+    "statistical-consultant": {
+      "name": "statistical-consultant",
+      "description": "Use this agent when planning statistical analyses, conducting power analyses, selecting appropriate statistical tests, or interpreting statistical results. This agent specializes in statistical design, analysis planning, and ensuring statistical rigor in research. Examples:\\n\\n<example>\\nContext: Planning statistical analysis for an experimental study\\nuser: \"I'm designing an RCT with three treatment groups and want to know what statistical tests I should use and how many participants I need\"\\nassistant: \"RCTs require careful statistical planning for valid inference. Let me use the statistical-consultant agent to design your analysis plan and calculate the required sample size.\"\\n<commentary>\\nExperimental studies need pre-planned statistical approaches to ensure adequate power and appropriate inference.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Dealing with complex data structures\\nuser: \"I have longitudinal data with missing values and nested observations. What's the best way to analyze this?\"\\nassistant: \"Complex data structures require sophisticated statistical approaches. I'll use the statistical-consultant agent to recommend appropriate methods for your longitudinal nested data.\"\\n<commentary>\\nComplex data structures often violate assumptions of simple statistical tests and require specialized approaches.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Interpreting unexpected statistical results\\nuser: \"My results show a significant interaction effect but the main effects aren't significant. How do I interpret this?\"\\nassistant: \"Interaction effects can be tricky to interpret correctly. Let me use the statistical-consultant agent to help you understand and properly interpret these statistical results.\"\\n<commentary>\\nStatistical interpretation requires understanding the underlying mathematical relationships and their practical meaning.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Addressing multiple comparisons problem\\nuser: \"I'm testing 20 different hypotheses in my study. How do I control for multiple comparisons?\"\\nassistant: \"Multiple comparisons require careful statistical control to avoid inflated Type I error. I'll use the statistical-consultant agent to recommend appropriate correction methods.\"\\n<commentary>\\nMultiple testing situations require statistical adjustments to maintain valid inference rates.\\n</commentary>\\n</example>",
+      "category": "Experimental Design",
+      "color": "blue",
+      "tools": [
+        "Read",
+        "Write",
+        "MultiEdit",
+        "WebSearch",
+        "WebFetch"
+      ],
+      "file_path": "experimental-design/statistical-consultant.md"
+    },
+    "methodology-designer": {
+      "name": "methodology-designer",
+      "description": "Use this agent when designing research methodologies, selecting appropriate research approaches, or creating comprehensive research designs that address specific research questions. This agent specializes in methodology selection, research design optimization, and ensuring methodological rigor. Examples:\\n\\n<example>\\nContext: Designing a mixed-methods study\\nuser: \"I want to study the impact of remote work on team collaboration, but I'm not sure whether to use qualitative, quantitative, or mixed methods\"\\nassistant: \"This research question would benefit from a mixed-methods approach. Let me use the methodology-designer agent to create a comprehensive design that captures both measurable outcomes and lived experiences.\"\\n<commentary>\\nComplex research questions often require sophisticated methodological approaches that combine multiple research paradigms.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Selecting appropriate research design for causal inference\\nuser: \"I want to determine if a new teaching method actually causes improved learning outcomes, not just correlation\"\\nassistant: \"Causal inference requires careful experimental design. I'll use the methodology-designer agent to create a randomized controlled trial design that can establish causality.\"\\n<commentary>\\nCausal claims require specific methodological approaches that can rule out alternative explanations.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Designing longitudinal research\\nuser: \"I want to track how students' attitudes toward science change throughout their undergraduate years\"\\nassistant: \"Longitudinal research requires careful planning for data collection over time. I'll use the methodology-designer agent to design a robust longitudinal study with appropriate controls.\"\\n<commentary>\\nLongitudinal studies need special consideration for participant retention, measurement consistency, and temporal confounds.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Adapting methodology for resource constraints\\nuser: \"I have a great research idea but limited budget and time. How can I design a feasible study?\"\\nassistant: \"Resource constraints require creative methodological solutions. I'll use the methodology-designer agent to design an efficient study that maximizes validity within your constraints.\"\\n<commentary>\\nPractical constraints often require innovative methodological approaches that balance rigor with feasibility.\\n</commentary>\\n</example>",
+      "category": "Experimental Design",
+      "color": "red",
+      "tools": [
+        "Read",
+        "Write",
+        "MultiEdit",
+        "WebSearch",
+        "WebFetch"
+      ],
+      "file_path": "experimental-design/methodology-designer.md"
+    },
+    "experiment-planner": {
+      "name": "experiment-planner",
+      "description": "Use this agent when planning detailed experimental procedures, creating research protocols, or organizing data collection activities. This agent specializes in experimental protocol development, procedure standardization, and research implementation planning. Examples:\\n\\n<example>\\nContext: Planning a clinical trial protocol\\nuser: \"I need to create a detailed protocol for a randomized controlled trial testing a new therapy approach\"\\nassistant: \"Clinical trial protocols require precise planning and standardization. Let me use the experiment-planner agent to develop a comprehensive protocol that ensures validity and reproducibility.\"\\n<commentary>\\nClinical trials need detailed protocols that specify every aspect of the study to ensure consistency and regulatory compliance.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Designing laboratory experiment procedures\\nuser: \"I'm planning a series of biochemistry experiments and need to standardize the procedures across different lab sessions\"\\nassistant: \"Laboratory standardization is crucial for reproducible results. I'll use the experiment-planner agent to create detailed protocols that ensure consistency across all experimental sessions.\"\\n<commentary>\\nLaboratory experiments require precise protocols to minimize variability and ensure reproducible results.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Planning field research procedures\\nuser: \"I'm conducting ecological field research across multiple sites and need to ensure consistent data collection methods\"\\nassistant: \"Field research requires robust protocols that account for environmental variability. I'll use the experiment-planner agent to design standardized field procedures.\"\\n<commentary>\\nField research protocols must be detailed enough to ensure consistency while flexible enough to handle real-world conditions.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Organizing longitudinal study procedures\\nuser: \"I'm planning a 5-year longitudinal study and need to organize all the data collection timepoints and procedures\"\\nassistant: \"Longitudinal studies require careful scheduling and protocol management. I'll use the experiment-planner agent to create a comprehensive timeline and procedure manual.\"\\n<commentary>\\nLongitudinal studies need detailed planning to maintain consistency over time and manage participant retention.\\n</commentary>\\n</example>",
+      "category": "Experimental Design",
+      "color": "orange",
+      "tools": [
+        "Read",
+        "Write",
+        "MultiEdit",
+        "WebSearch",
+        "WebFetch"
+      ],
+      "file_path": "experimental-design/experiment-planner.md"
+    },
+    "research-coder": {
+      "name": "research-coder",
+      "description": "Use this agent when developing research software, implementing algorithms for academic studies, or creating tools for data collection and analysis. This agent specializes in research-focused programming, scientific computing, and creating reproducible research code. Examples:\\n\\n<example>\\nContext: Implementing a novel algorithm for research\\nuser: \"I need to implement a new clustering algorithm I developed for my machine learning research\"\\nassistant: \"I'll help you implement your clustering algorithm with proper documentation and testing. Let me use the research-coder agent to create clean, reproducible research code.\"\\n<commentary>\\nResearch algorithms need careful implementation with emphasis on correctness, documentation, and reproducibility.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Creating data collection tools\\nuser: \"I need to build a web-based survey tool for my psychology experiment with specific randomization requirements\"\\nassistant: \"Custom research tools require careful attention to experimental requirements. I'll use the research-coder agent to build a survey tool that meets your experimental design needs.\"\\n<commentary>\\nResearch tools must precisely implement experimental protocols and maintain data integrity.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Automating research workflows\\nuser: \"I'm doing the same data preprocessing steps repeatedly for my longitudinal study. Can this be automated?\"\\nassistant: \"Automation can greatly improve research efficiency and consistency. I'll use the research-coder agent to create automated workflows for your data preprocessing pipeline.\"\\n<commentary>\\nResearch automation reduces errors and improves reproducibility while saving time on repetitive tasks.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Making research code reproducible\\nuser: \"My analysis code works on my computer but my collaborators can't run it. How do I make it more reproducible?\"\\nassistant: \"Reproducibility is crucial for research credibility. I'll use the research-coder agent to restructure your code with proper dependency management and documentation.\"\\n<commentary>\\nReproducible research code requires careful attention to dependencies, documentation, and portability.\\n</commentary>\\n</example>",
+      "category": "Research Development",
+      "color": "green",
+      "tools": [
+        "Write",
+        "Read",
+        "MultiEdit",
+        "Bash",
+        "WebFetch"
+      ],
+      "file_path": "research-development/research-coder.md"
+    },
+    "reference-manager": {
+      "name": "reference-manager",
+      "description": "Use this agent when organizing research references, formatting citations, managing bibliographic databases, or ensuring citation accuracy and consistency. This agent specializes in reference organization, citation style formatting, and bibliographic data management. Examples:\\n\\n<example>\\nContext: Organizing references for a large research project\\nuser: \"I have hundreds of papers for my dissertation and I'm losing track of what I've read and how they relate to each other\"\\nassistant: \"Large reference collections need systematic organization. Let me use the reference-manager agent to create a structured system for organizing and tracking your dissertation references.\"\\n<commentary>\\nLarge research projects require systematic reference organization to maintain efficiency and avoid duplication.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Formatting citations for journal submission\\nuser: \"I need to convert all my APA citations to Nature format for a journal submission\"\\nassistant: \"Citation style conversion requires attention to detail and format specifications. I'll use the reference-manager agent to accurately convert your citations to Nature format.\"\\n<commentary>\\nJournal submissions require precise adherence to specific citation styles and formatting requirements.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Cleaning up inconsistent reference data\\nuser: \"My reference database is a mess with duplicate entries, missing information, and inconsistent formatting\"\\nassistant: \"Reference database cleanup requires systematic data validation. I'll use the reference-manager agent to identify duplicates, fill missing information, and standardize your reference collection.\"\\n<commentary>\\nReference database maintenance is crucial for research efficiency and citation accuracy.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Creating annotated bibliographies\\nuser: \"I need to create an annotated bibliography with summaries and relevance notes for each paper\"\\nassistant: \"Annotated bibliographies require systematic organization and clear summaries. I'll use the reference-manager agent to structure your bibliography with consistent annotations and formatting.\"\\n<commentary>\\nAnnotated bibliographies help researchers track paper relevance and key findings for future reference.\\n</commentary>\\n</example>",
+      "category": "Literature Review",
+      "color": "brown",
+      "tools": [
+        "Read",
+        "Write",
+        "MultiEdit",
+        "WebSearch",
+        "WebFetch",
+        "Grep"
+      ],
+      "file_path": "literature-review/reference-manager.md"
+    },
+    "citation-analyzer": {
+      "name": "citation-analyzer",
+      "description": "Use this agent when analyzing citation patterns, tracking research impact, identifying influential papers, or understanding knowledge networks in academic fields. This agent specializes in bibliometric analysis, citation network mapping, and research impact assessment. Examples:\\n\\n<example>\\nContext: Identifying the most influential papers in a research area\\nuser: \"I want to understand which papers have been most influential in the development of deep learning\"\\nassistant: \"I'll analyze citation patterns to identify the most influential deep learning papers. Let me use the citation-analyzer agent to map citation networks and identify key publications.\"\\n<commentary>\\nCitation analysis reveals the intellectual structure and most impactful contributions in research fields.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Tracking the evolution of research ideas\\nuser: \"How has the concept of 'attention mechanisms' in AI evolved over time through citations?\"\\nassistant: \"Citation analysis can trace idea evolution beautifully. I'll use the citation-analyzer agent to track how attention mechanisms have developed through citation patterns and research lineages.\"\\n<commentary>\\nCitation genealogies reveal how research concepts develop and spread through academic communities.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Assessing research impact for tenure evaluation\\nuser: \"I need to analyze the impact of my publications for my tenure dossier\"\\nassistant: \"Research impact assessment requires comprehensive citation analysis. I'll use the citation-analyzer agent to evaluate your publication impact using multiple metrics and benchmarks.\"\\n<commentary>\\nAcademic career decisions often depend on rigorous analysis of research impact and influence.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Identifying collaboration networks\\nuser: \"I want to understand the collaboration patterns in computational biology research\"\\nassistant: \"Collaboration networks reveal research communities and partnerships. I'll use the citation-analyzer agent to map co-authorship patterns and identify key research clusters in computational biology.\"\\n<commentary>\\nCitation and collaboration analysis reveals the social structure of scientific communities.\\n</commentary>\\n</example>",
+      "category": "Literature Review",
+      "color": "cyan",
+      "tools": [
+        "WebSearch",
+        "WebFetch",
+        "Read",
+        "Write",
+        "MultiEdit",
+        "Grep"
+      ],
+      "file_path": "literature-review/citation-analyzer.md"
+    },
+    "literature-synthesizer": {
+      "name": "literature-synthesizer",
+      "description": "Use this agent when synthesizing findings from multiple research papers, creating comprehensive literature reviews, or integrating diverse research perspectives into coherent narratives. This agent specializes in thematic analysis, evidence synthesis, and knowledge integration. Examples:\\n\\n<example>\\nContext: Writing a literature review section for a dissertation\\nuser: \"I have 150 papers on social media and mental health but I'm struggling to synthesize them into a coherent narrative\"\\nassistant: \"Synthesizing large literature collections requires systematic thematic analysis. Let me use the literature-synthesizer agent to organize these papers into coherent themes and create a comprehensive review.\"\\n<commentary>\\nLarge literature collections need systematic organization and thematic synthesis to create meaningful narratives.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Integrating contradictory research findings\\nuser: \"I found conflicting results about the effectiveness of online learning. Some studies show benefits, others show drawbacks\"\\nassistant: \"Contradictory findings often reveal important nuances. I'll use the literature-synthesizer agent to analyze these conflicts and identify factors that explain the different outcomes.\"\\n<commentary>\\nContradictory findings require careful analysis to understand underlying factors and boundary conditions.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Creating a systematic review\\nuser: \"I need to synthesize quantitative findings from 50 RCTs on mindfulness interventions for anxiety\"\\nassistant: \"Systematic reviews require rigorous synthesis methods. I'll use the literature-synthesizer agent to conduct meta-analytic synthesis and assess the overall evidence quality.\"\\n<commentary>\\nQuantitative synthesis requires statistical methods and careful assessment of study quality and heterogeneity.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Integrating interdisciplinary research\\nuser: \"My research spans psychology, computer science, and education. How do I synthesize findings across these different fields?\"\\nassistant: \"Interdisciplinary synthesis requires bridging different theoretical frameworks. I'll use the literature-synthesizer agent to integrate findings across these fields while respecting their different approaches.\"\\n<commentary>\\nInterdisciplinary synthesis must navigate different methodologies, terminologies, and theoretical frameworks.\\n</commentary>\\n</example>",
+      "category": "Literature Review",
+      "color": "indigo",
+      "tools": [
+        "Read",
+        "Write",
+        "MultiEdit",
+        "WebSearch",
+        "WebFetch",
+        "Grep"
+      ],
+      "file_path": "literature-review/literature-synthesizer.md"
+    },
+    "paper-finder": {
+      "name": "paper-finder",
+      "description": "Use this agent when searching for academic literature, finding relevant papers, or conducting systematic literature searches across databases. This agent specializes in search strategy development, database navigation, and comprehensive literature discovery. Examples:\\n\\n<example>\\nContext: Starting a literature review for a new research project\\nuser: \"I need to find all relevant papers on transformer models in natural language processing from the last 5 years\"\\nassistant: \"I'll conduct a comprehensive search for transformer NLP papers. Let me use the paper-finder agent to develop an optimal search strategy across multiple academic databases.\"\\n<commentary>\\nSystematic literature searches require strategic keyword selection and database-specific search techniques.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Finding papers for a specific methodology\\nuser: \"I'm looking for papers that use mixed-methods approaches in educational technology research\"\\nassistant: \"Mixed-methods papers require specific search strategies. I'll use the paper-finder agent to locate educational technology studies using both qualitative and quantitative methods.\"\\n<commentary>\\nMethodology-specific searches need careful keyword selection to capture diverse research approaches.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Tracking down seminal papers in a field\\nuser: \"I need to find the foundational papers that established the field of human-computer interaction\"\\nassistant: \"Finding foundational papers requires historical perspective and citation analysis. I'll use the paper-finder agent to identify the seminal works that shaped HCI.\"\\n<commentary>\\nHistorical literature searches require understanding field evolution and key milestone papers.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Finding recent developments in a rapidly evolving field\\nuser: \"I need the most recent papers on quantum computing applications in machine learning\"\\nassistant: \"Rapidly evolving fields require real-time search strategies. I'll use the paper-finder agent to find the latest quantum ML papers across preprint servers and journals.\"\\n<commentary>\\nEmerging fields require searching both traditional journals and preprint servers for cutting-edge work.\\n</commentary>\\n</example>",
+      "category": "Literature Review",
+      "color": "teal",
+      "tools": [
+        "WebSearch",
+        "WebFetch",
+        "Read",
+        "Write",
+        "MultiEdit",
+        "Grep"
+      ],
+      "file_path": "literature-review/paper-finder.md"
+    },
+    "ml-researcher": {
+      "name": "ml-researcher",
+      "description": "Use this agent when applying machine learning methods to research problems, developing novel ML algorithms, or using AI techniques for scientific discovery. This agent specializes in research-focused machine learning, algorithm development, and AI applications in academia. Examples:\\n\\n<example>\\nContext: Applying ML to scientific discovery\\nuser: \"I want to use machine learning to identify patterns in genomic data that might predict disease susceptibility\"\\nassistant: \"ML applications in genomics require careful feature engineering and validation. Let me use the ml-researcher agent to develop appropriate models for genomic pattern recognition.\"\\n<commentary>\\nGenomic ML requires domain expertise, proper validation strategies, and interpretation of biological significance.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Developing novel ML algorithms for research\\nuser: \"I'm developing a new clustering algorithm for social network analysis and need to validate it against existing methods\"\\nassistant: \"Novel algorithm development requires rigorous benchmarking and validation. I'll use the ml-researcher agent to design comprehensive evaluation protocols for your clustering method.\"\\n<commentary>\\nAlgorithm development requires systematic evaluation against baselines and theoretical analysis of properties.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Using ML for hypothesis generation\\nuser: \"I have a large dataset of patient records and want to use ML to generate hypotheses about treatment effectiveness\"\\nassistant: \"ML-driven hypothesis generation requires careful interpretation and validation. I'll use the ml-researcher agent to develop exploratory models that can suggest testable hypotheses.\"\\n<commentary>\\nML for hypothesis generation must balance discovery potential with statistical rigor and clinical interpretability.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Interpretable ML for research\\nuser: \"I need to build a predictive model for educational outcomes that teachers and administrators can understand and trust\"\\nassistant: \"Interpretable ML is crucial for research applications. I'll use the ml-researcher agent to develop transparent models with clear explanations for educational stakeholders.\"\\n<commentary>\\nResearch ML applications often require interpretability and explainability for domain expert acceptance.\\n</commentary>\\n</example>",
+      "category": "Data Analysis",
+      "color": "purple",
+      "tools": [
+        "Write",
+        "Read",
+        "MultiEdit",
+        "Bash",
+        "WebFetch"
+      ],
+      "file_path": "data-analysis/ml-researcher.md"
+    },
+    "results-interpreter": {
+      "name": "results-interpreter",
+      "description": "Use this agent when interpreting complex research results, drawing meaningful conclusions from statistical analyses, or translating technical findings into actionable insights. This agent specializes in result interpretation, significance assessment, and research implication analysis. Examples:\\n\\n<example>\\nContext: Interpreting unexpected research findings\\nuser: \"My intervention study shows significant results but in the opposite direction from what I hypothesized. How do I interpret this?\"\\nassistant: \"Unexpected results often provide the most valuable insights. Let me use the results-interpreter agent to help you understand these findings and their implications for theory and practice.\"\\n<commentary>\\nUnexpected results require careful interpretation to understand their meaning and implications for existing theory.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Understanding complex interaction effects\\nuser: \"My analysis shows a three-way interaction between treatment, gender, and age. I'm not sure how to interpret or explain this\"\\nassistant: \"Complex interactions can be challenging to interpret meaningfully. I'll use the results-interpreter agent to break down this interaction and explain its practical implications.\"\\n<commentary>\\nComplex statistical interactions require systematic interpretation to understand their real-world meaning.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Assessing practical significance\\nuser: \"My results are statistically significant but the effect size seems small. Is this finding meaningful?\"\\nassistant: \"Statistical vs. practical significance is a crucial distinction. I'll use the results-interpreter agent to assess the practical importance of your findings in context.\"\\n<commentary>\\nInterpreting significance requires balancing statistical evidence with practical importance and contextual factors.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Synthesizing results across multiple analyses\\nuser: \"I ran several different analyses on my data and got somewhat different results. How do I make sense of this pattern?\"\\nassistant: \"Multiple analyses can provide complementary insights. I'll use the results-interpreter agent to synthesize your findings into a coherent interpretation.\"\\n<commentary>\\nSynthesizing multiple analyses requires understanding their relationships and drawing unified conclusions.\\n</commentary>\\n</example>",
+      "category": "Data Analysis",
+      "color": "gold",
+      "tools": [
+        "Read",
+        "Write",
+        "MultiEdit",
+        "WebSearch",
+        "WebFetch"
+      ],
+      "file_path": "data-analysis/results-interpreter.md"
+    },
+    "data-visualizer": {
+      "name": "data-visualizer",
+      "description": "Use this agent when creating research visualizations, designing figures for publications, or developing interactive data exploration tools. This agent specializes in scientific visualization, publication-quality graphics, and effective data communication. Examples:\\n\\n<example>\\nContext: Creating figures for a research paper\\nuser: \"I need to create publication-quality figures showing the results of my clinical trial with multiple outcome measures\"\\nassistant: \"Publication figures require careful attention to clarity and standards. Let me use the data-visualizer agent to create professional figures that effectively communicate your clinical trial results.\"\\n<commentary>\\nPublication figures must meet journal standards while clearly communicating complex research findings.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Exploring complex datasets\\nuser: \"I have a large dataset with many variables and I'm not sure what patterns exist. How can I visualize this effectively?\"\\nassistant: \"Exploratory data visualization can reveal hidden patterns. I'll use the data-visualizer agent to create interactive visualizations that help you explore your complex dataset.\"\\n<commentary>\\nExploratory visualization helps researchers discover patterns and relationships in complex data.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Communicating results to non-experts\\nuser: \"I need to present my research findings to policymakers who aren't familiar with statistical concepts\"\\nassistant: \"Communicating to non-experts requires clear, intuitive visualizations. I'll use the data-visualizer agent to create accessible graphics that convey your key findings effectively.\"\\n<commentary>\\nResearch communication requires adapting visualizations to audience expertise and needs.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Creating interactive research dashboards\\nuser: \"I want to create an interactive dashboard where other researchers can explore our longitudinal study data\"\\nassistant: \"Interactive dashboards enable collaborative data exploration. I'll use the data-visualizer agent to build a user-friendly dashboard for your longitudinal research data.\"\\n<commentary>\\nInteractive tools facilitate data sharing and collaborative research exploration.\\n</commentary>\\n</example>",
+      "category": "Data Analysis",
+      "color": "orange",
+      "tools": [
+        "Write",
+        "Read",
+        "MultiEdit",
+        "WebFetch",
+        "Bash"
+      ],
+      "file_path": "data-analysis/data-visualizer.md"
+    },
+    "statistical-analyst": {
+      "name": "statistical-analyst",
+      "description": "Use this agent when conducting advanced statistical analyses, building statistical models, or performing complex data analysis for research. This agent specializes in statistical modeling, hypothesis testing, and advanced analytical techniques. Examples:\\n\\n<example>\\nContext: Analyzing complex experimental data\\nuser: \"I have a longitudinal study with nested data and missing values. I need to analyze the treatment effects over time\"\\nassistant: \"Complex longitudinal data requires sophisticated statistical modeling. Let me use the statistical-analyst agent to implement mixed-effects models that handle your nested structure and missing data.\"\\n<commentary>\\nLongitudinal nested data requires advanced statistical techniques that account for correlation structures and missing data mechanisms.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Building predictive models for research\\nuser: \"I want to build a model to predict patient outcomes based on multiple clinical variables\"\\nassistant: \"Predictive modeling in healthcare requires careful variable selection and validation. I'll use the statistical-analyst agent to build and validate robust predictive models.\"\\n<commentary>\\nPredictive modeling requires balancing model complexity with interpretability and ensuring proper validation.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Analyzing survey data with complex sampling\\nuser: \"I have survey data with stratified sampling and need to account for the sampling design in my analysis\"\\nassistant: \"Complex survey data requires specialized analysis techniques. I'll use the statistical-analyst agent to implement survey-weighted analyses that properly account for your sampling design.\"\\n<commentary>\\nSurvey data analysis must account for sampling design to produce valid population inferences.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Meta-analysis of research studies\\nuser: \"I want to combine results from 20 studies on the effectiveness of a psychological intervention\"\\nassistant: \"Meta-analysis requires careful statistical synthesis of study results. I'll use the statistical-analyst agent to conduct a comprehensive meta-analysis with appropriate heterogeneity assessment.\"\\n<commentary>\\nMeta-analysis involves complex statistical techniques for combining studies while assessing between-study variation.\\n</commentary>\\n</example>",
+      "category": "Data Analysis",
+      "color": "blue",
+      "tools": [
+        "Read",
+        "Write",
+        "MultiEdit",
+        "Bash",
+        "WebFetch"
+      ],
+      "file_path": "data-analysis/statistical-analyst.md"
+    },
+    "academic-writer": {
+      "name": "academic-writer",
+      "description": "Use this agent when writing research papers, crafting academic manuscripts, or developing scholarly communications. This agent specializes in academic writing conventions, journal requirements, and effective scientific communication. Examples:\\n\\n<example>\\nContext: Writing a research paper for journal submission\\nuser: \"I have all my research results but I'm struggling to write them up into a coherent paper for a top-tier journal\"\\nassistant: \"Academic writing requires careful structure and clear argumentation. Let me use the academic-writer agent to help you craft a compelling manuscript that meets journal standards.\"\\n<commentary>\\nAcademic papers require specific structures, writing styles, and argumentation patterns for successful publication.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Revising a paper based on reviewer feedback\\nuser: \"I got reviewer comments that my paper lacks clarity and the argument isn't well-developed. How do I address this?\"\\nassistant: \"Reviewer feedback requires systematic revision and strengthening of arguments. I'll use the academic-writer agent to help you address the reviewers' concerns and improve your paper.\"\\n<commentary>\\nRevision based on peer review requires understanding reviewer perspectives and strengthening weak arguments.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Writing for interdisciplinary audiences\\nuser: \"My research spans computer science and psychology, but I need to write for a general science audience\"\\nassistant: \"Interdisciplinary writing requires bridging different fields and terminologies. I'll use the academic-writer agent to help you communicate across disciplinary boundaries.\"\\n<commentary>\\nInterdisciplinary communication requires translating concepts across fields while maintaining precision.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Crafting compelling abstracts and introductions\\nuser: \"I can write the methods and results, but I struggle with creating engaging abstracts and introductions\"\\nassistant: \"Abstracts and introductions are crucial for reader engagement. I'll use the academic-writer agent to help you craft compelling openings that draw readers in.\"\\n<commentary>\\nAbstracts and introductions determine whether readers engage with the full paper and are critical for impact.\\n</commentary>\\n</example>",
+      "category": "Paper Writing",
+      "color": "purple",
+      "tools": [
+        "Read",
+        "Write",
+        "MultiEdit",
+        "WebSearch",
+        "WebFetch"
+      ],
+      "file_path": "paper-writing/academic-writer.md"
+    },
+    "figure-creator": {
+      "name": "figure-creator",
+      "description": "Use this agent when creating scientific figures, designing publication graphics, or developing visual elements for research papers. This agent specializes in scientific illustration, figure design, and creating publication-ready graphics that meet journal standards. Examples:\\n\\n<example>\\nContext: Creating figures for a research paper\\nuser: \"I need to create a figure showing the experimental setup and results for my physics experiment\"\\nassistant: \"Scientific figures require clear communication of complex concepts. Let me use the figure-creator agent to design a comprehensive figure that shows both your experimental setup and key results.\"\\n<commentary>\\nScientific figures must clearly communicate experimental design and results while meeting publication standards.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Designing conceptual diagrams\\nuser: \"I need a conceptual diagram to illustrate the theoretical framework underlying my psychology research\"\\nassistant: \"Conceptual diagrams help readers understand theoretical relationships. I'll use the figure-creator agent to create a clear visual representation of your theoretical framework.\"\\n<commentary>\\nConceptual diagrams require careful design to accurately represent theoretical relationships and processes.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Creating workflow diagrams\\nuser: \"I need to create a flowchart showing the methodology and participant flow in my clinical trial\"\\nassistant: \"Clinical trial flowcharts must follow specific standards. I'll use the figure-creator agent to create a CONSORT-compliant flowchart for your trial.\"\\n<commentary>\\nMethodological flowcharts must follow field-specific standards while clearly communicating research processes.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Designing multi-panel figures\\nuser: \"I want to combine several related analyses into one comprehensive figure with multiple panels\"\\nassistant: \"Multi-panel figures require careful layout and consistent styling. I'll use the figure-creator agent to design a cohesive figure that effectively presents your related analyses.\"\\n<commentary>\\nMulti-panel figures need consistent design elements and logical organization to communicate complex information effectively.\\n</commentary>\\n</example>",
+      "category": "Paper Writing",
+      "color": "teal",
+      "tools": [
+        "Write",
+        "Read",
+        "MultiEdit",
+        "WebFetch",
+        "Bash"
+      ],
+      "file_path": "paper-writing/figure-creator.md"
+    },
+    "citation-formatter": {
+      "name": "citation-formatter",
+      "description": "Use this agent when formatting citations and references, converting between citation styles, or ensuring citation accuracy and consistency. This agent specializes in citation style formatting, reference verification, and bibliographic accuracy. Examples:\\n\\n<example>\\nContext: Converting citations for journal submission\\nuser: \"I need to convert all my APA citations to Vancouver style for a medical journal submission\"\\nassistant: \"Citation style conversion requires attention to specific formatting rules. Let me use the citation-formatter agent to accurately convert your citations to Vancouver format.\"\\n<commentary>\\nJournal submissions often require specific citation styles that must be followed precisely for acceptance.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Fixing inconsistent citation formatting\\nuser: \"My manuscript has inconsistent citation formatting with some APA and some MLA mixed together\"\\nassistant: \"Inconsistent citations can hurt manuscript credibility. I'll use the citation-formatter agent to standardize all citations to your target style.\"\\n<commentary>\\nConsistent citation formatting is essential for professional academic writing and journal acceptance.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Formatting complex citation types\\nuser: \"I have citations for datasets, software, social media posts, and other non-traditional sources. How do I format these properly?\"\\nassistant: \"Non-traditional sources require special citation formatting. I'll use the citation-formatter agent to format these complex citations according to current standards.\"\\n<commentary>\\nModern research includes diverse source types that require specialized citation formatting approaches.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Verifying citation accuracy\\nuser: \"I want to double-check that all my citations are accurate and complete before submitting my paper\"\\nassistant: \"Citation accuracy is crucial for scholarly integrity. I'll use the citation-formatter agent to verify and complete all your citations.\"\\n<commentary>\\nAccurate citations are essential for scholarly integrity and allow readers to verify and build upon research.\\n</commentary>\\n</example>",
+      "category": "Paper Writing",
+      "color": "brown",
+      "tools": [
+        "Read",
+        "Write",
+        "MultiEdit",
+        "WebSearch",
+        "WebFetch"
+      ],
+      "file_path": "paper-writing/citation-formatter.md"
+    },
+    "research-documenter": {
+      "name": "research-documenter",
+      "description": "Use this agent when creating comprehensive research documentation, developing research reports, or organizing research materials for sharing and archiving. This agent specializes in research documentation, report writing, and knowledge preservation. Examples:\\n\\n<example>\\nContext: Creating comprehensive research documentation\\nuser: \"I need to document my entire research project including methods, data, analysis, and findings for long-term preservation\"\\nassistant: \"Comprehensive research documentation ensures reproducibility and knowledge preservation. Let me use the research-documenter agent to create thorough documentation of your project.\"\\n<commentary>\\nComplete research documentation is essential for reproducibility, knowledge transfer, and long-term research impact.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Writing technical research reports\\nuser: \"I need to write a detailed technical report for my funding agency that covers all aspects of my research project\"\\nassistant: \"Technical reports require comprehensive coverage and clear organization. I'll use the research-documenter agent to create a thorough report that meets agency requirements.\"\\n<commentary>\\nFunding agency reports need to demonstrate project completion and impact while providing technical detail.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Creating research protocols and SOPs\\nuser: \"I need to document all our laboratory procedures and analysis methods so other researchers can replicate our work\"\\nassistant: \"Detailed protocols are crucial for research reproducibility. I'll use the research-documenter agent to create comprehensive SOPs and method documentation.\"\\n<commentary>\\nDetailed protocols enable other researchers to replicate and build upon existing work.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Organizing research materials for sharing\\nuser: \"I want to make all my research materials available to the scientific community but need help organizing and documenting everything\"\\nassistant: \"Open science requires well-organized, documented materials. I'll use the research-documenter agent to prepare your research for public sharing.\"\\n<commentary>\\nOpen science initiatives require careful documentation and organization to maximize research impact and reusability.\\n</commentary>\\n</example>",
+      "category": "Paper Writing",
+      "color": "gray",
+      "tools": [
+        "Read",
+        "Write",
+        "MultiEdit",
+        "WebSearch",
+        "WebFetch"
+      ],
+      "file_path": "paper-writing/research-documenter.md"
+    },
+    "research-ideator": {
+      "name": "research-ideator",
+      "description": "Use this agent when brainstorming research ideas, identifying novel research directions, or exploring interdisciplinary opportunities. This agent specializes in creative research ideation, connecting disparate concepts, and generating innovative research questions. Examples:\\n\\n<example>\\nContext: Starting a new research project in machine learning\\nuser: \"I want to explore new applications of transformer models but I'm not sure what hasn't been done yet\"\\nassistant: \"I'll help you discover unexplored applications of transformers. Let me use the research-ideator agent to identify novel domains and generate creative research directions.\"\\n<commentary>\\nResearch ideation requires systematic exploration of unexplored intersections and emerging opportunities.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Seeking interdisciplinary research opportunities\\nuser: \"How can I combine my expertise in psychology with recent advances in AI?\"\\nassistant: \"Perfect opportunity for interdisciplinary innovation. I'll use the research-ideator agent to identify promising intersections between psychology and AI that could lead to impactful research.\"\\n<commentary>\\nInterdisciplinary research often produces the most innovative and impactful discoveries.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Expanding on existing research\\nuser: \"My current work on social media sentiment analysis is getting stale. What new directions could I explore?\"\\nassistant: \"Let's revitalize your research direction. I'll use the research-ideator agent to identify emerging trends and unexplored angles in sentiment analysis research.\"\\n<commentary>\\nEvolution of existing research requires identifying gaps and emerging opportunities in the field.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Addressing real-world problems through research\\nuser: \"I want my research to have practical impact on climate change. What are some underexplored research areas?\"\\nassistant: \"Impact-driven research is crucial. I'll use the research-ideator agent to identify high-impact, underexplored research opportunities in climate change that align with your expertise.\"\\n<commentary>\\nProblem-driven research ideation focuses on real-world impact and societal needs.\\n</commentary>\\n</example>",
+      "category": "Research Planning",
+      "color": "purple",
+      "tools": [
+        "WebSearch",
+        "WebFetch",
+        "Read",
+        "Write",
+        "MultiEdit"
+      ],
+      "file_path": "research-planning/research-ideator.md"
+    },
+    "proposal-writer": {
+      "name": "proposal-writer",
+      "description": "Use this agent when writing research proposals, grant applications, or project plans for academic research. This agent specializes in proposal structure, persuasive scientific writing, and meeting funding agency requirements. Examples:\\n\\n<example>\\nContext: Writing an NSF research proposal\\nuser: \"I need to write an NSF proposal for my machine learning research but I'm struggling with the structure and requirements\"\\nassistant: \"NSF proposals have specific requirements and evaluation criteria. Let me use the proposal-writer agent to help structure your ML research proposal according to NSF guidelines.\"\\n<commentary>\\nFunding agencies have specific formats and evaluation criteria that must be carefully addressed.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Developing a dissertation proposal\\nuser: \"I need to write my PhD dissertation proposal on climate change communication but don't know how to structure it\"\\nassistant: \"Dissertation proposals require careful balance of ambition and feasibility. I'll use the proposal-writer agent to help structure your climate communication research proposal.\"\\n<commentary>\\nDissertation proposals must demonstrate both scholarly contribution and practical feasibility.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Writing an industry-academic collaboration proposal\\nuser: \"We want to propose a joint research project with a tech company on AI ethics. How do we structure this?\"\\nassistant: \"Industry-academic partnerships require addressing both scientific and commercial interests. I'll use the proposal-writer agent to structure a proposal that appeals to both audiences.\"\\n<commentary>\\nCollaborative proposals must balance different stakeholder interests and expectations.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Preparing a conference presentation proposal\\nuser: \"I want to present my preliminary research at a major conference but need help with the abstract and proposal\"\\nassistant: \"Conference proposals need to be compelling and concise. I'll use the proposal-writer agent to craft an engaging presentation proposal that highlights your research contribution.\"\\n<commentary>\\nConference proposals must quickly communicate significance and engage the review committee.\\n</commentary>\\n</example>",
+      "category": "Research Planning",
+      "color": "orange",
+      "tools": [
+        "WebSearch",
+        "WebFetch",
+        "Read",
+        "Write",
+        "MultiEdit"
+      ],
+      "file_path": "research-planning/proposal-writer.md"
+    },
+    "hypothesis-generator": {
+      "name": "hypothesis-generator",
+      "description": "Use this agent when formulating testable hypotheses, developing theoretical predictions, or creating research questions that can be empirically investigated. This agent specializes in hypothesis construction, theoretical reasoning, and prediction formulation. Examples:\\n\\n<example>\\nContext: Developing hypotheses for an experimental study\\nuser: \"I want to study the effect of background music on coding performance, but I need specific, testable hypotheses\"\\nassistant: \"I'll help you formulate precise, testable hypotheses about music and coding performance. Let me use the hypothesis-generator agent to create specific predictions based on cognitive theory.\"\\n<commentary>\\nGood hypotheses are specific, testable, and grounded in existing theory or observations.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Creating competing hypotheses for a research study\\nuser: \"I'm studying why some online communities thrive while others fail. I need multiple competing hypotheses to test\"\\nassistant: \"Multiple competing hypotheses will strengthen your research design. I'll use the hypothesis-generator agent to develop several testable explanations for community success.\"\\n<commentary>\\nCompeting hypotheses allow for stronger inference and more robust research conclusions.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Refining vague research ideas into testable predictions\\nuser: \"I think social media affects mental health, but I need to make this more specific and testable\"\\nassistant: \"Let's transform that broad idea into precise, testable hypotheses. I'll use the hypothesis-generator agent to create specific predictions about social media mechanisms and mental health outcomes.\"\\n<commentary>\\nVague ideas must be refined into specific, measurable predictions for empirical testing.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Developing null and alternative hypotheses\\nuser: \"I need to set up proper statistical hypotheses for my intervention study on student motivation\"\\nassistant: \"Proper statistical hypothesis formulation is crucial for valid inference. I'll use the hypothesis-generator agent to create clear null and alternative hypotheses for your motivation intervention.\"\\n<commentary>\\nStatistical hypotheses must be precisely formulated to enable appropriate statistical testing.\\n</commentary>\\n</example>",
+      "category": "Research Planning",
+      "color": "green",
+      "tools": [
+        "WebSearch",
+        "WebFetch",
+        "Read",
+        "Write",
+        "MultiEdit"
+      ],
+      "file_path": "research-planning/hypothesis-generator.md"
+    },
+    "gap-analyzer": {
+      "name": "gap-analyzer",
+      "description": "Use this agent when conducting systematic literature reviews to identify research gaps, analyzing the current state of knowledge in a field, or finding underexplored areas for new research. This agent specializes in comprehensive gap analysis, knowledge mapping, and opportunity identification. Examples:\\n\\n<example>\\nContext: Starting a PhD literature review\\nuser: \"I need to identify research gaps in natural language processing for healthcare applications\"\\nassistant: \"I'll conduct a systematic gap analysis of NLP in healthcare. Let me use the gap-analyzer agent to map the current knowledge landscape and identify underexplored areas.\"\\n<commentary>\\nSystematic gap analysis is crucial for positioning new research within the existing knowledge landscape.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Preparing a research proposal\\nuser: \"I want to study the impact of remote work on team creativity, but I need to know what's already been done\"\\nassistant: \"Perfect timing for a thorough gap analysis. I'll use the gap-analyzer agent to map existing research on remote work and creativity, identifying specific gaps for your proposal.\"\\n<commentary>\\nProposal success depends on clearly demonstrating how new research fills identified gaps.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Exploring a new research area\\nuser: \"I'm considering research in quantum machine learning but don't know the current state of the field\"\\nassistant: \"Let me map the quantum ML landscape for you. I'll use the gap-analyzer agent to analyze current research, identify key players, and highlight unexplored opportunities.\"\\n<commentary>\\nEntering new fields requires comprehensive understanding of existing work and open questions.\\n</commentary>\\n</example>\\n\\n<example>\\nContext: Updating research direction\\nuser: \"My research area has evolved rapidly. I need to understand what gaps still exist after recent advances\"\\nassistant: \"Rapid field evolution creates new gaps while closing others. I'll use the gap-analyzer agent to analyze recent developments and identify emerging opportunities.\"\\n<commentary>\\nDynamic fields require continuous gap analysis to stay relevant and identify new opportunities.\\n</commentary>\\n</example>",
+      "category": "Research Planning",
+      "color": "blue",
+      "tools": [
+        "WebSearch",
+        "WebFetch",
+        "Read",
+        "Write",
+        "MultiEdit",
+        "Grep"
+      ],
+      "file_path": "research-planning/gap-analyzer.md"
+    }
+  }
+}
