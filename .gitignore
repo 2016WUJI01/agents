@@ -1,5 +1,6 @@
 # Claude Code settings and local files
 .claude/
+.augment/
 .DS_Store
 settings.local.json
 

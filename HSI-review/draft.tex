@@ -1,0 +1,219 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+
+\geometry{margin=1in}
+\doublespacing
+
+\title{Recent Advances in Hyperspectral Image Classification: A Comprehensive Review of Deep Learning and Machine Learning Approaches}
+
+\author{Anonymous}
+
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This review examines recent advances in hyperspectral image classification. We analyze CNNs, RNNs, GNNs, Vision Transformers, and Mamba models. Key challenges include high dimensionality, limited labeled samples, and spectral variability. Performance comparisons on benchmark datasets show superior capabilities of hybrid architectures.
+
+\textbf{Keywords:} Hyperspectral image classification, Deep learning, CNN, Transformer, Mamba, GNN
+\end{abstract}
+
+\section{Introduction}
+
+\subsection{Applications and Challenges}
+
+HSI technology captures continuous spectral data across hundreds of bands, enabling precise material identification through spectral signatures \cite{hong2020more, paoletti2019deep}.
+
+\textbf{Key Applications:}
+\begin{itemize}
+\item Precision agriculture \cite{gewali2018machine}
+\item Environmental monitoring \cite{gewali2018machine}
+\item Urban management \cite{li2013hyperspectral}
+\item Geological exploration \cite{roy2019hybridSN}
+\item Defense applications \cite{roy2019hybridSN}
+\end{itemize}
+
+\textbf{Main Challenges:}
+\begin{itemize}
+\item High dimensionality (Hughes Phenomenon)
+\item Limited labeled samples
+\item Spectral variability
+\item Mixed pixels
+\item Computational complexity
+\end{itemize}
+
+\subsection{Deep Learning Methods Overview}
+
+Deep learning approaches have become dominant in HSI classification due to their automatic feature learning capabilities \cite{li2017deep}:
+
+\begin{itemize}
+\item \textbf{CNN-based methods}: 1D-CNN, 2D-CNN, 3D-CNN, HybridSN
+\item \textbf{RNN-based methods}: LSTM, GRU for spectral sequence modeling
+\item \textbf{GNN-based methods}: Graph convolution for spatial-spectral relationships
+\item \textbf{Transformer-based methods}: Vision Transformers, attention mechanisms
+\item \textbf{Mamba-based methods}: State space models for efficient processing
+\end{itemize}
+
+
+
+
+
+\section{CNN-Based Methods}
+
+\subsection{CNN Architectures}
+
+\textbf{Key CNN Types:}
+\begin{itemize}
+\item \textbf{1D-CNN}: Spectral feature extraction \cite{li2017deep}
+\item \textbf{2D-CNN}: Spatial feature extraction \cite{li2017deep}
+\item \textbf{3D-CNN}: Joint spectral-spatial features \cite{paoletti2019deep}
+\item \textbf{HybridSN}: 3D-CNN + 2D-CNN combination \cite{roy2019hybridSN}
+\end{itemize}
+
+\subsection{Representative Models}
+
+\textbf{HybridSN} \cite{roy2019hybridSN}: Combines 3D-CNN and 2D-CNN for spectral-spatial feature extraction.
+
+\textbf{Fast 3D-CNN} \cite{ahmad2021fast}: Compact architecture with incremental PCA preprocessing.
+
+\section{RNN-Based Methods}
+
+\subsection{RNN Architectures}
+
+\textbf{Key RNN Types:}
+\begin{itemize}
+\item \textbf{LSTM}: Long Short-Term Memory for spectral sequences \cite{mou2017deep}
+\item \textbf{GRU}: Gated Recurrent Unit for efficient processing
+\item \textbf{Bi-LSTM}: Bidirectional processing of spectral data
+\end{itemize}
+
+\section{GNN-Based Methods}
+
+\subsection{GNN Architectures}
+
+\textbf{Key GNN Types:}
+\begin{itemize}
+\item \textbf{GCN}: Graph Convolutional Networks \cite{hong2020graph}
+\item \textbf{GAT}: Graph Attention Networks
+\item \textbf{GraphSAGE}: Inductive graph representation learning
+\item \textbf{Multi-scale GCN}: Dynamic graph construction \cite{wan2019multiscale}
+\end{itemize}
+
+\section{Transformer-Based Methods}
+
+\subsection{Transformer Architectures}
+
+\textbf{Key Transformer Types:}
+\begin{itemize}
+\item \textbf{ViT}: Vision Transformer for HSI patches
+\item \textbf{SpectralFormer}: Spectral-spatial tokenization \cite{sun2022spectral}
+\item \textbf{HSI-BERT}: Bidirectional encoder representations
+\item \textbf{Hybrid CNN-Transformer}: Combined local-global features
+\end{itemize}
+
+\section{Mamba-Based Methods}
+
+\subsection{Mamba Architectures}
+
+\textbf{Key Mamba Types:}
+\begin{itemize}
+\item \textbf{S²Mamba}: Spatial-spectral state space model
+\item \textbf{ConvMamba}: CNN-Mamba hybrid architecture
+\item \textbf{3DSS-Mamba}: 3D spectral-spatial Mamba
+\item \textbf{GraphMamba}: Graph-Mamba combination \cite{ahmad2021graphmamba}
+\item \textbf{HS-Mamba}: Local-to-global framework \cite{pan2024mambalg}
+\end{itemize}
+
+
+
+
+
+\section{Performance Comparison and Discussion}
+
+\subsection{Benchmark Datasets}
+
+\textbf{Standard Datasets:}
+\begin{itemize}
+\item \textbf{Indian Pines:} 145 bands, 16 classes (AVIRIS)
+\item \textbf{Pavia University:} 103 bands, 9 classes (ROSIS)
+\item \textbf{Salinas:} 204 bands, 16 classes (AVIRIS)
+\item \textbf{Kennedy Space Center:} 176 bands, 13 classes (AVIRIS)
+\item \textbf{Houston 2013:} 144 bands, 15 classes (ITRES-CASI)
+\item \textbf{Botswana:} 145 bands, 14 classes (Hyperion)
+\end{itemize}
+
+\subsection{Evaluation Metrics}
+
+\textbf{Standard Metrics:}
+\begin{itemize}
+\item \textbf{Overall Accuracy (OA):} Total correct classifications
+\item \textbf{Average Accuracy (AA):} Mean class accuracy
+\item \textbf{Kappa Coefficient ($\kappa$):} Agreement measure
+\item \textbf{Producer's Accuracy (PA):} Class-specific recall
+\item \textbf{User's Accuracy (UA):} Class-specific precision
+\item \textbf{F1-Score:} Harmonic mean of precision and recall
+\end{itemize}
+
+\subsection{Performance Summary}
+
+\textbf{Method Rankings (Typical OA on Indian Pines):}
+\begin{itemize}
+\item Hybrid CNN-Transformer: 98-99\%
+\item Mamba-based models: 97-98\%
+\item 3D-CNN (HybridSN): 95-97\%
+\item GNN-based methods: 94-96\%
+\item Traditional ML (SVM): 85-90\%
+\end{itemize}
+
+\section{Conclusions and Future Perspectives}
+
+\subsection{Key Findings}
+
+\textbf{Main Trends (2020-2025):}
+\begin{itemize}
+\item Dominance of hybrid architectures (CNN-Transformer, Mamba-CNN)
+\item Shift from single-model to multi-model approaches
+\item Emphasis on efficiency-performance trade-offs
+\item Integration of attention mechanisms and graph structures
+\end{itemize}
+
+\subsection{Current Challenges}
+
+\begin{itemize}
+\item \textbf{Limited labeled data:} Small sample learning
+\item \textbf{Computational efficiency:} Real-time processing requirements
+\item \textbf{Interpretability:} Explainable AI for critical applications
+\item \textbf{Generalization:} Cross-sensor and cross-domain adaptation
+\item \textbf{Scalability:} Large-scale data processing
+\end{itemize}
+
+\subsection{Future Directions}
+
+\begin{itemize}
+\item \textbf{Foundation models:} Large-scale pre-trained HSI models
+\item \textbf{Physics-informed networks:} Domain knowledge integration
+\item \textbf{Multimodal fusion:} HSI + LiDAR + SAR integration
+\item \textbf{Edge computing:} On-board satellite processing
+\item \textbf{Continual learning:} Adaptive long-term monitoring
+\item \textbf{Self-supervised learning:} Reduced labeling requirements
+\end{itemize}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}

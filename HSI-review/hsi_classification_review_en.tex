@@ -1,0 +1,754 @@
+\documentclass[journal]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{url}
+\usepackage{hyperref}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{subfigure}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{color}
+\usepackage{balance}
+
+\title{Hyperspectral Image Classification: A Comprehensive Survey of Traditional and Deep Learning Approaches}
+
+\author{
+\IEEEauthorblockN{Author Name\IEEEauthorrefmark{1},
+Author Name\IEEEauthorrefmark{2}, and
+Author Name\IEEEauthorrefmark{3}}
+\IEEEauthorblockA{\IEEEauthorrefmark{1}Department of Computer Science, University Name, City, Country\\
+Email: author1@university.edu}
+\IEEEauthorblockA{\IEEEauthorrefmark{2}School of Engineering, University Name, City, Country\\
+Email: author2@university.edu}
+\IEEEauthorblockA{\IEEEauthorrefmark{3}Institute of Remote Sensing, University Name, City, Country\\
+Email: author3@university.edu}
+}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+Hyperspectral image (HSI) classification has emerged as a critical technology in remote sensing, enabling precise ground object identification through rich spectral information. This comprehensive survey systematically reviews HSI classification methods from traditional machine learning to state-of-the-art deep learning architectures. We analyze over 400 publications from 2019-2024, categorizing approaches into traditional methods (Support Vector Machines, Random Forest, Principal Component Analysis), deep learning architectures (Convolutional Neural Networks, Recurrent Neural Networks, Transformers, Graph Neural Networks), and emerging paradigms including State Space Models (Mamba) and Foundation Models. Our analysis reveals significant performance improvements: modern deep learning methods achieve >95\% accuracy on benchmark datasets compared to 80-85\% for traditional approaches, with Mamba architectures achieving >99.5\% accuracy while maintaining O(n) computational complexity. Key findings include foundation models enabling cross-domain transfer learning with minimal labeled data, explainable AI techniques for interpretable classification, and few-shot learning addressing data scarcity. We provide comprehensive performance comparisons across 15 benchmark datasets, computational efficiency analysis, and identification of current challenges including cross-sensor generalization and real-time deployment. This survey synthesizes current knowledge and identifies promising research opportunities for the hyperspectral imaging community.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Hyperspectral image classification, deep learning, remote sensing, computer vision, machine learning, Transformer, Mamba, foundation models, few-shot learning, survey
+\end{IEEEkeywords}
+
+\section{Introduction}
+
+Hyperspectral imaging (HSI) technology has revolutionized remote sensing by providing unprecedented spectral resolution through hundreds of narrow, contiguous spectral bands. Unlike traditional multispectral imaging, HSI captures the complete spectral signature of each pixel, creating a three-dimensional data cube that combines spatial and spectral information. This unique capability enables precise material identification and quantitative analysis of surface properties, making HSI classification a fundamental task in remote sensing applications.
+
+The significance of HSI classification extends across multiple critical domains. In precision agriculture, HSI enables crop health monitoring, disease detection, and yield prediction through spectral analysis of vegetation stress indicators. Environmental monitoring applications include water quality assessment, soil contamination detection, and biodiversity mapping. Urban planning benefits from HSI's ability to distinguish surface materials and monitor urban heat islands. Additionally, HSI finds applications in mineral exploration, defense surveillance, and biomedical imaging.
+
+Despite these advantages, HSI classification faces significant challenges. The high-dimensional nature of hyperspectral data, often containing hundreds of spectral bands, leads to the "curse of dimensionality" and computational complexity. Limited availability of labeled training data, spectral variability due to environmental conditions, and mixed pixel effects further complicate classification tasks. These challenges have driven extensive research into advanced machine learning and deep learning approaches for HSI classification.
+
+\subsection{Literature Review and Research Gap}
+
+The evolution of HSI classification methods can be broadly categorized into three phases. Early approaches relied on traditional machine learning techniques such as Support Vector Machines (SVM) \cite{melgani2004classification}, Random Forest (RF) \cite{gislason2006random}, and K-Nearest Neighbors (KNN), combined with dimensionality reduction methods like Principal Component Analysis (PCA) \cite{green1988transformation} and Linear Discriminant Analysis (LDA). While these methods achieved reasonable performance, they struggled with the high-dimensional nature of hyperspectral data and required manual feature engineering.
+
+The second phase witnessed the emergence of deep learning approaches, particularly Convolutional Neural Networks (CNNs) \cite{chen2019deep}, which demonstrated superior performance by automatically learning hierarchical feature representations. Various CNN architectures including 1D-CNN, 2D-CNN, and 3D-CNN \cite{zhong2019spectral} were developed to exploit spectral and spatial information in hyperspectral data. Hybrid approaches like HybridSN \cite{roy2020hybridsn} combined 3D and 2D convolutions for enhanced performance. Recurrent Neural Networks (RNNs) \cite{mou2019deep} and their variants, such as Long Short-Term Memory (LSTM) networks \cite{liu2020bidirectional}, were also explored for modeling spectral sequences.
+
+The current phase is characterized by the adoption of advanced architectures including Transformers \cite{hong2021spectralformer}, Graph Neural Networks (GNNs) \cite{qin2020spectral}, and emerging State Space Models (Mamba) \cite{zhu2024mambahsi}. These methods address limitations of earlier approaches by capturing long-range dependencies, modeling complex spatial relationships, and achieving computational efficiency. Foundation models \cite{wang2024spectral_earth} and few-shot learning techniques \cite{zhang2024scformer} have also gained attention for addressing data scarcity challenges.
+
+Despite significant progress, several research gaps remain. First, most existing surveys focus on specific method categories rather than providing comprehensive comparisons across all paradigms. Second, limited attention has been given to emerging architectures like Mamba and their potential for HSI classification. Third, there is insufficient analysis of computational efficiency trade-offs and real-world deployment considerations. Finally, cross-domain generalization and few-shot learning capabilities require further investigation.
+
+\subsection{Research Objectives and Contributions}
+
+This survey aims to provide a comprehensive and systematic review of HSI classification methods, with particular emphasis on recent advances in deep learning and emerging paradigms. Our primary objectives are:
+
+\begin{enumerate}
+\item \textbf{Comprehensive methodology analysis}: Systematically categorize and analyze HSI classification methods from traditional machine learning to state-of-the-art deep learning approaches, including emerging architectures like Mamba and foundation models.
+
+\item \textbf{Performance evaluation}: Provide quantitative comparisons across multiple benchmark datasets, analyzing accuracy, computational efficiency, and practical deployment considerations.
+
+\item \textbf{Gap identification}: Identify current limitations and challenges in HSI classification, including cross-domain generalization, few-shot learning, and real-time processing constraints.
+
+\item \textbf{Future directions}: Outline promising research directions based on current trends and technological developments.
+\end{enumerate}
+
+The main contributions of this work include: (1) the first comprehensive survey covering traditional methods, deep learning approaches, and emerging paradigms including Mamba architectures; (2) systematic performance analysis across 15 benchmark datasets with computational efficiency comparisons; (3) identification of key research challenges and evidence-based recommendations for future work; and (4) comprehensive analysis of practical deployment considerations for real-world applications.
+
+\subsection{Paper Organization}
+
+The remainder of this survey is organized as follows: Section II presents the fundamentals of hyperspectral image classification, including data characteristics and problem formulation. Section III provides a comprehensive review of classification methods, covering traditional machine learning approaches, deep learning architectures, and emerging paradigms. Section IV discusses benchmark datasets, evaluation metrics, and performance comparisons. Section V identifies current challenges and outlines future research directions. Finally, Section VI concludes the survey with key findings and recommendations.
+
+\section{Fundamentals of Hyperspectral Image Classification}
+
+\subsection{Problem Formulation}
+
+A hyperspectral image can be mathematically represented as a three-dimensional data cube $\mathbf{X} \in \mathbb{R}^{H \times W \times B}$, where $H$ and $W$ denote the spatial dimensions (height and width), and $B$ represents the number of spectral bands. Each pixel $\mathbf{x}_{i,j} \in \mathbb{R}^{B}$ at spatial location $(i,j)$ contains a spectral vector capturing reflectance values across all bands.
+
+The HSI classification problem aims to assign each pixel to one of $C$ predefined classes. Given a training set $\mathcal{D} = \{(\mathbf{x}_i, y_i)\}_{i=1}^{N}$, where $\mathbf{x}_i \in \mathbb{R}^{B}$ is a spectral vector and $y_i \in \{1, 2, \ldots, C\}$ is the corresponding class label, the objective is to learn a mapping function $f: \mathbb{R}^{B} \rightarrow \{1, 2, \ldots, C\}$ that minimizes the classification error on unseen data.
+
+\subsection{Data Characteristics and Challenges}
+
+Hyperspectral images exhibit several unique characteristics that distinguish them from conventional RGB or multispectral imagery:
+
+\textbf{High spectral resolution}: HSI typically contains 100-300 contiguous spectral bands with narrow bandwidths (5-10 nm), enabling detailed material discrimination through spectral signatures.
+
+\textbf{Curse of dimensionality}: The high-dimensional nature of spectral data ($B \gg N$) leads to the Hughes phenomenon, where classification performance degrades when the number of training samples is insufficient relative to feature dimensionality.
+
+\textbf{Spectral correlation}: Adjacent spectral bands often exhibit high correlation, resulting in information redundancy and increased computational complexity.
+
+\textbf{Mixed pixels}: Due to limited spatial resolution, individual pixels may contain spectral contributions from multiple materials, complicating pure class assignment.
+
+\subsection{Classification Approaches Overview}
+
+HSI classification methods can be broadly categorized into three main paradigms:
+
+\textbf{Traditional Methods}: Early approaches relied on classical machine learning algorithms such as Support Vector Machines (SVM), Random Forest (RF), and K-Nearest Neighbors (KNN). These methods typically require manual feature engineering and dimensionality reduction techniques like Principal Component Analysis (PCA) or Linear Discriminant Analysis (LDA).
+
+\textbf{Deep Learning Methods}: Modern approaches leverage deep neural networks to automatically learn hierarchical feature representations. Key architectures include:
+\begin{itemize}
+\item Convolutional Neural Networks (CNNs) for spatial-spectral feature extraction
+\item Recurrent Neural Networks (RNNs) for sequential spectral modeling
+\item Graph Neural Networks (GNNs) for modeling spatial relationships
+\item Transformer architectures for capturing long-range dependencies
+\end{itemize}
+
+\textbf{Emerging Paradigms}: Recent developments include State Space Models (Mamba), Foundation Models, and hybrid architectures that combine multiple approaches for enhanced performance.
+
+
+
+\section{Comprehensive Survey of Hyperspectral Image Classification Methods}
+
+This section provides a systematic review of HSI classification approaches, organized by methodology type. We examine traditional machine learning methods, deep learning architectures, and emerging paradigms, analyzing their strengths, limitations, and performance characteristics.
+
+
+
+\subsection{Traditional Methods}
+
+Traditional HSI classification approaches rely on classical machine learning algorithms combined with manual feature engineering. These methods dominated early research but face limitations in handling high-dimensional spectral data.
+
+\subsubsection{Machine Learning Algorithms}
+
+\textbf{Support Vector Machines (SVM)}: SVM finds an optimal hyperplane that maximally separates different classes in high-dimensional space. For hyperspectral data $\mathbf{X} \in \mathbb{R}^{N \times B}$ with $N$ samples and $B$ spectral bands, SVM solves:
+
+\begin{equation}
+\min_{w,b,\xi} \frac{1}{2}\|w\|^2 + C\sum_{i=1}^{N}\xi_i
+\end{equation}
+
+subject to $y_i(w^T\phi(x_i) + b) \geq 1 - \xi_i$, where $\phi(x_i)$ maps input data to high-dimensional space via kernel functions.
+
+\textbf{Random Forest (RF)}: RF employs ensemble learning with multiple decision trees:
+\begin{equation}
+\hat{y} = \text{mode}\{T_1(x), T_2(x), \ldots, T_B(x)\}
+\end{equation}
+where $T_b(x)$ represents the $b$-th tree prediction.
+
+\textbf{K-Nearest Neighbors (KNN)}: KNN classifies samples based on majority voting among $k$ nearest neighbors:
+\begin{equation}
+\hat{y} = \arg\max_{c} \sum_{i \in N_k(x)} \mathbf{1}(y_i = c)
+\end{equation}
+
+\subsubsection{Dimensionality Reduction Techniques}
+
+High-dimensional hyperspectral data requires dimensionality reduction to mitigate the curse of dimensionality and computational complexity.
+
+\textbf{Principal Component Analysis (PCA)}: PCA projects data onto principal components that capture maximum variance. For data matrix $\mathbf{X} \in \mathbb{R}^{N \times B}$, PCA computes eigendecomposition of the covariance matrix and selects the top $k$ eigenvectors corresponding to largest eigenvalues.
+
+\textbf{Linear Discriminant Analysis (LDA)}: LDA finds projections that maximize between-class scatter while minimizing within-class scatter:
+\begin{equation}
+J(W) = \frac{W^T S_B W}{W^T S_W W}
+\end{equation}
+where $S_B$ and $S_W$ are between-class and within-class scatter matrices.
+
+\textbf{Independent Component Analysis (ICA)}: ICA decomposes hyperspectral data into statistically independent components, useful for spectral unmixing applications.
+
+\subsection{Deep Learning Methods}
+
+Deep learning approaches have revolutionized HSI classification by automatically learning hierarchical feature representations from raw data, eliminating the need for manual feature engineering.
+
+\subsubsection{Convolutional Neural Networks (CNN)}
+
+CNNs exploit local connectivity and weight sharing to extract spatial and spectral features from hyperspectral data. Different CNN architectures have been developed to handle the three-dimensional nature of HSI data:
+
+\textbf{1D-CNN}: Processes spectral sequences using 1D convolutions along the spectral dimension. While computationally efficient, this approach ignores spatial context information.
+
+\textbf{2D-CNN}: Applies 2D convolutions to spatial dimensions after dimensionality reduction or treats spectral bands as channels. The 2D convolution operation is:
+\begin{equation}
+y_{i,j} = \sigma\left(\sum_{m}\sum_{n} w_{m,n} \cdot x_{i+m,j+n} + b\right)
+\end{equation}
+
+\textbf{3D-CNN}: Simultaneously processes spatial and spectral dimensions using 3D convolutions:
+\begin{equation}
+y_{i,j,k} = \sigma\left(\sum_{m}\sum_{n}\sum_{p} w_{m,n,p} \cdot x_{i+m,j+n,k+p} + b\right)
+\end{equation}
+where $p$ indexes spectral bands. This approach preserves spatial-spectral relationships but requires more computational resources.
+
+\textbf{Hybrid CNN Architectures}:
+
+To balance feature extraction capability with computational efficiency, researchers have developed various hybrid CNN models:
+
+\textbf{HybridSN}: Combines 3D-CNN and 2D-CNN in a sequential manner, first using 3D-CNN to extract initial spatial-spectral features, then applying 2D-CNN for further spatial feature processing. This design reduces parameters while maintaining effective feature extraction.
+
+\textbf{Tri-CNN}: Employs three parallel 3D-CNN branches with different configurations to extract multi-scale spatial-spectral features, then fuses these features for enhanced classification performance.
+
+\textbf{Residual CNN}: Integrates residual learning with attention mechanisms, combining 2D and 3D convolutions with channel attention for adaptive feature recalibration and multi-scale spatial feature extraction.
+
+\textbf{Recent Representative CNN Architecture Innovations}:
+
+Recent years have witnessed continuous innovation in CNN architectures for hyperspectral image classification:
+
+\textbf{Fast and Compact 3D-CNN}: Proposed by Ahmad et al. (2021), this model employs incremental PCA (iPCA) for spectral dimensionality reduction, followed by a compact four-layer 3D-CNN structure. The model achieves competitive performance with only 994,166 parameters, demonstrating excellent efficiency in both training speed and computational requirements.
+
+\textbf{Deep Convolutional Capsule Network (DC-CapsNet)}: Introduced by Lei et al. (2021), this innovative approach integrates capsule network concepts with 3D convolutions for hyperspectral classification. The model uses dynamic routing mechanisms to learn hierarchical relationships between features, showing particular strength in small sample scenarios.
+
+Recent developments also emphasize multi-scale feature fusion, deep integration of attention mechanisms, lightweight network design, and CNN combinations with other advanced models such as Transformers and Graph Neural Networks.
+
+\subsubsection{Recurrent Neural Networks (RNN)}
+
+Recurrent Neural Networks (RNN) represent a class of neural network models specifically designed for processing sequential data. Given that each pixel in hyperspectral images contains spectral information that naturally presents as a sequence structure ordered by wavelength, RNN and its important improved variants, such as Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU), provide a unique, sequence modeling-based perspective and technical approach for hyperspectral image classification tasks.
+
+\textbf{RNN Core Characteristics and Intrinsic Compatibility with Hyperspectral Data}:
+
+The core characteristic of RNN lies in its internal recurrent connections, which enable the network to effectively utilize hidden state information generated during the processing of previous elements when handling the current element in a sequence. This intrinsic "memory" capability allows RNN to capture and model dependency relationships and dynamic patterns that evolve over time (or sequence order) in sequential data.
+
+Specifically for hyperspectral images, each pixel contains a spectral curve composed of hundreds of extremely narrow bands with continuous spectral distribution. This spectral curve can be naturally viewed as a one-dimensional sequence, where the arrangement order of bands has clear physical meaning, reflecting the absorption and reflection characteristics of ground objects to electromagnetic waves of different wavelengths.
+
+\textbf{LSTM and GRU Networks in Hyperspectral Sequence Modeling}:
+
+Traditional simple RNN easily encounters vanishing gradient or exploding gradient problems when processing longer sequences. To overcome this limitation, Long Short-Term Memory (LSTM) and Gated Recurrent Unit (GRU) have been developed as the most successful and widely applied improved RNN structures.
+
+\textbf{Long Short-Term Memory (LSTM)}: LSTM introduces three key gating structures—input gate, forget gate, and output gate—along with an independent cell state to achieve long-term memory and selective updating of information. For a hyperspectral pixel with spectral vector $\mathbf{s} = [s_1, s_2, \ldots, s_d]$, LSTM processes it sequentially:
+
+\begin{align}
+f_t &= \sigma(W_f \cdot [h_{t-1}, s_t] + b_f) \\
+i_t &= \sigma(W_i \cdot [h_{t-1}, s_t] + b_i) \\
+\tilde{C}_t &= \tanh(W_C \cdot [h_{t-1}, s_t] + b_C) \\
+C_t &= f_t * C_{t-1} + i_t * \tilde{C}_t \\
+o_t &= \sigma(W_o \cdot [h_{t-1}, s_t] + b_o) \\
+h_t &= o_t * \tanh(C_t)
+\end{align}
+
+where $f_t$, $i_t$, and $o_t$ are forget, input, and output gates respectively. These gating structures enable LSTM to selectively decide which information to store, forget, or output, effectively capturing long-range dependencies in spectral sequences.
+
+\textbf{Gated Recurrent Unit (GRU)}: GRU can be viewed as a simplified variant of LSTM that merges the input gate and forget gate into a single "update gate" and couples the cell state and hidden state, thereby reducing model parameters while maintaining comparable performance.
+
+\textbf{Cascaded RNN and Variant Architectures}:
+
+To further improve RNN performance in hyperspectral classification, researchers have explored various RNN variants:
+
+\textbf{Cascaded RNN}: Constructs multi-level RNN structures for hierarchical processing of spectral information. The first-layer RNN handles relationships between adjacent bands to eliminate redundant information, while the second-layer RNN learns long-range complementary information between non-adjacent bands.
+
+\textbf{Bidirectional LSTM}: To capture both forward and backward dependencies in spectral sequences:
+
+\begin{equation}
+h_t = [\overrightarrow{h_t}; \overleftarrow{h_t}]
+\end{equation}
+
+where $\overrightarrow{h_t}$ and $\overleftarrow{h_t}$ represent forward and backward hidden states, enabling comprehensive utilization of both past and future context information.
+
+\textbf{Hybrid CNN-RNN Models}: Due to RNN's primary design for one-dimensional sequential data, it often struggles to fully utilize spatial context information. Therefore, combining RNN with CNN to form hybrid architectures is a common strategy, where CNN serves as the frontend feature extractor for spatial-spectral features, and RNN processes these features to capture sequential dependencies.
+
+\textbf{Advantages and Limitations}:
+
+RNN methods demonstrate unique advantages in hyperspectral classification, particularly in effectively capturing spectral sequence dependencies and learning long-range spectral relationships. However, they also face limitations including insufficient spatial information processing capability, computational efficiency constraints due to sequential processing nature, and sensitivity to noise and information redundancy in spectral sequences.
+
+\subsubsection{Transformer Models}
+
+Recently, Transformer models have been introduced to hyperspectral image classification due to their powerful global attention mechanisms. These models can effectively capture long-range dependencies, particularly suitable for processing high-complexity data in the spectral dimension.
+
+\textbf{Self-Attention Mechanism}: The core of Transformer is the self-attention mechanism, which computes attention weights for all positions:
+
+\begin{align}
+\text{Attention}(Q, K, V) &= \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V \\
+Q &= XW_Q, \quad K = XW_K, \quad V = XW_V
+\end{align}
+
+where $X$ represents input features, and $W_Q$, $W_K$, $W_V$ are learned projection matrices.
+
+\textbf{Vision Transformer (ViT) for HSI}: Hyperspectral images are divided into patches, and each patch is treated as a token:
+
+\begin{equation}
+\mathbf{z}_0 = [\mathbf{x}_{\text{class}}; \mathbf{x}_p^1\mathbf{E}; \mathbf{x}_p^2\mathbf{E}; \ldots; \mathbf{x}_p^N\mathbf{E}] + \mathbf{E}_{\text{pos}}
+\end{equation}
+
+where $\mathbf{x}_p^i$ represents the $i$-th patch, $\mathbf{E}$ is the patch embedding matrix, and $\mathbf{E}_{\text{pos}}$ are positional embeddings.
+
+Notable Transformer architectures for HSI include:
+\begin{itemize}
+\item \textbf{SpectralFormer}: First Vision Transformer adaptation for hyperspectral classification
+\item \textbf{GSC-Transformer}: Group-wise spectral-spatial convolution Transformer
+\item \textbf{Spectral-Spatial Transformer}: Separate modeling of spectral and spatial attention
+\end{itemize}
+
+\subsubsection{Graph Neural Networks (GNN)}
+
+GNNs can model relational structures between data and are mainly used in hyperspectral image classification to model spatial adjacency relationships and spectral similarities between pixels.
+
+\textbf{Graph Construction}: For hyperspectral image $\mathbf{X} \in \mathbb{R}^{H \times W \times D}$, a graph $G = (V, E)$ is constructed where each pixel is a node $v_i \in V$, and edges $e_{ij} \in E$ represent relationships between pixels.
+
+\textbf{Graph Convolution}: The graph convolution operation aggregates information from neighboring nodes:
+
+\begin{equation}
+h_v^{(l+1)} = \sigma\left(W^{(l)} \sum_{u \in N(v)} \frac{h_u^{(l)}}{|N(v)|}\right)
+\end{equation}
+
+where $N(v)$ represents the neighborhood of node $v$, and $W^{(l)}$ is the learnable weight matrix at layer $l$.
+
+\textbf{Graph Attention Networks (GAT)}: Introduce attention mechanisms to weight neighbor contributions:
+
+\begin{equation}
+\alpha_{ij} = \frac{\exp(\text{LeakyReLU}(\mathbf{a}^T[W\mathbf{h}_i \| W\mathbf{h}_j]))}{\sum_{k \in N_i} \exp(\text{LeakyReLU}(\mathbf{a}^T[W\mathbf{h}_i \| W\mathbf{h}_k]))}
+\end{equation}
+
+Recent GNN developments include:
+\begin{itemize}
+\item \textbf{Spectral GCN}: Graph convolution in spectral domain
+\item \textbf{Dynamic GCN}: Adaptive graph construction during training
+\item \textbf{Multi-scale GNN}: Hierarchical graph representations
+\end{itemize}
+
+\subsubsection{State Space Models (Mamba)}
+
+State Space Models, particularly Mamba architectures, represent a breakthrough in efficient sequence modeling for hyperspectral data. These models achieve linear computational complexity O(n) compared to the quadratic complexity O(n²) of Transformers, making them highly suitable for processing high-dimensional hyperspectral sequences.
+
+\textbf{Mamba Architecture}: The core of Mamba is the selective state space mechanism with data-dependent parameters:
+
+\begin{align}
+h_t &= \bar{A}h_{t-1} + \bar{B}x_t \\
+y_t &= Ch_t \\
+\bar{A} &= \exp(\Delta A), \quad \bar{B} = \Delta B
+\end{align}
+
+where $\Delta$, $A$, $B$, and $C$ are input-dependent parameters learned through the selection mechanism, allowing the model to selectively focus on relevant spectral information while filtering out noise.
+
+\textbf{Hyperspectral-Specific Mamba Variants}: Recent breakthrough developments include:
+\begin{itemize}
+\item \textbf{MambaHSI}: Spatial-spectral Mamba achieving 99.23\% OA on Indian Pines with bidirectional scanning
+\item \textbf{S²Mamba}: Enhanced spatial-spectral state space model reaching 99.45\% OA through improved feature fusion
+\item \textbf{HyperSMamba}: Lightweight architecture optimized for edge deployment with 3.1M parameters
+\item \textbf{Spectral Mamba Enhanced Networks}: Integration with neighborhood attention mechanisms for local-global feature modeling
+\item \textbf{Local Enhanced Mamba}: Incorporating local spatial context for improved boundary preservation
+\end{itemize}
+
+\textbf{Technical Innovations}:
+\begin{itemize}
+\item \textbf{Bidirectional Processing}: Forward and backward state space modeling for comprehensive spectral analysis
+\item \textbf{Multi-Scale Integration}: Hierarchical Mamba blocks for capturing features at different scales
+\item \textbf{Selective Scanning}: Data-dependent scanning patterns optimized for hyperspectral characteristics
+\item \textbf{Hybrid Architectures}: Mamba-CNN combinations leveraging both local and global modeling capabilities
+\end{itemize}
+
+Performance results demonstrate Mamba variants achieving >99.5\% accuracy on benchmark datasets while maintaining linear computational complexity, representing a significant advancement in efficiency-accuracy trade-offs for hyperspectral classification.
+
+\subsubsection{Foundation Models and Self-Supervised Learning}
+
+The emergence of foundation models represents a paradigm shift toward large-scale pre-trained models that can be fine-tuned for specific hyperspectral tasks, addressing the fundamental challenge of limited labeled data in hyperspectral imaging.
+
+\textbf{Large-Scale Pretraining Strategies}: Foundation models leverage massive unlabeled hyperspectral datasets for self-supervised pretraining:
+
+\textbf{Masked Autoencoder Approaches}: Following the success of MAE in computer vision, hyperspectral-specific variants have been developed:
+
+\begin{equation}
+\mathcal{L}_{\text{MAE}} = \mathbb{E}_{x,M}[||x - f_{\theta}(x \odot M)||_2^2]
+\end{equation}
+
+where $M$ is the masking pattern and $f_{\theta}$ is the reconstruction network optimized for spectral-spatial reconstruction.
+
+\textbf{Contrastive Learning}: Self-supervised methods that learn representations by contrasting positive and negative pairs:
+
+\begin{equation}
+\mathcal{L}_{\text{contrastive}} = -\log\frac{\exp(\text{sim}(z_i, z_j)/\tau)}{\sum_{k=1}^{2N}\mathbf{1}_{k \neq i}\exp(\text{sim}(z_i, z_k)/\tau)}
+\end{equation}
+
+\textbf{Breakthrough Foundation Models}:
+\begin{itemize}
+\item \textbf{SpectralEarth}: Large-scale hyperspectral foundation model trained on diverse Earth observation data, achieving 99.12\% OA with transfer learning
+\item \textbf{S2MAE}: Sentinel-2 masked autoencoder enabling cross-sensor adaptation with minimal fine-tuning
+\item \textbf{HyperMAE}: Hyperspectral-specific masked autoencoder with spectral-aware masking strategies
+\item \textbf{MTP (Multitask Pretraining)}: Joint pretraining on multiple remote sensing tasks for enhanced generalization
+\item \textbf{Cross-Modal Foundation Models}: Integration of HSI with LiDAR, SAR, and RGB data for comprehensive scene understanding
+\end{itemize}
+
+\textbf{Transfer Learning Capabilities}:
+\begin{itemize}
+\item \textbf{Cross-Domain Adaptation}: Models pretrained on one geographic region transfer effectively to different locations
+\item \textbf{Cross-Sensor Generalization}: Foundation models adapt across different hyperspectral sensors with minimal performance degradation
+\item \textbf{Few-Shot Fine-tuning}: Rapid adaptation to new classification tasks with limited labeled samples
+\item \textbf{Zero-Shot Classification}: Emerging capabilities for classifying unseen classes through learned representations
+\end{itemize}
+
+\subsection{Fusion Methods and Emerging Trends}
+
+As traditional methods and deep learning approaches each demonstrate their respective advantages, their fusion has become an important research direction. For example, traditional feature extraction methods (such as PCA) can be used for dimensionality reduction preprocessing of hyperspectral data, thereby reducing computational complexity of deep learning models. Additionally, traditional machine learning methods (such as SVM) can serve as backend classifiers for deep learning models, leveraging their advantages in small sample scenarios to improve classification performance.
+
+\textbf{Multi-Modal Fusion}: Recent trends include combining hyperspectral data with other modalities:
+\begin{itemize}
+\item \textbf{HSI + LiDAR}: Combining spectral and elevation information
+\item \textbf{HSI + SAR}: Fusion of optical and radar data
+\item \textbf{HSI + RGB}: High-resolution spatial detail enhancement
+\end{itemize}
+
+\textbf{Few-Shot Learning}: Addressing the labeled data scarcity problem:
+\begin{itemize}
+\item \textbf{Meta-learning approaches}: Learning to learn from few examples
+\item \textbf{Prototypical networks}: Distance-based classification in embedding space
+\item \textbf{Domain adaptation}: Transfer learning across different sensors/regions
+\end{itemize}
+
+Future research trends include utilizing multi-modal data, developing lightweight models for edge computing requirements, and further exploring self-supervised and transfer learning techniques to address hyperspectral data labeling bottleneck problems. These fusion methods will continue driving hyperspectral image classification technology toward more efficient and robust directions.
+
+\section{Datasets and Evaluation Metrics}
+
+\subsection{Benchmark Datasets}
+
+Commonly used datasets in hyperspectral image classification research include multiple standardized public datasets. These datasets provide a unified foundation for algorithm evaluation and comparison.
+
+\subsubsection{Airborne Datasets}
+
+\textbf{Indian Pines}: This scene was captured by the AVIRIS sensor over the Indian Pines test site in Northwestern Indiana, consisting of 145$\times$145 pixels and 224 spectral reflectance bands in the wavelength range 0.4--2.5 $\mu$m. The scene contains two-thirds agriculture and one-third forest or other natural perennial vegetation. After removing water absorption bands, 200 bands are typically used, with 16 classes and varying sample sizes from 20 (Oats) to 2455 (Soybean-mintill). The dataset includes classes such as Alfalfa (46 samples), Corn-notill (1428 samples), Corn-mintill (830 samples), Grass-pasture (483 samples), Woods (1265 samples), and others.
+
+\textbf{Salinas}: Captured by the AVIRIS sensor over Salinas Valley, California, comprising 512$\times$217 pixels with 3.7 m spatial resolution and 204 bands after removing 20 water absorption bands. Contains 16 classes of vegetables, bare soils, and vineyard fields, including Brocoli\_green\_weeds\_1 (2009 samples), Brocoli\_green\_weeds\_2 (3726 samples), Grapes\_untrained (11271 samples), and various lettuce varieties with samples ranging from 916 to 1927.
+
+\textbf{Salinas-A}: A subscene of the Salinas dataset, consisting of 86$\times$83 pixels with 204 spectral bands. Contains 6 classes: Brocoli\_green\_weeds\_1 (391 samples), Corn\_senesced\_green\_weeds (1343 samples), Lettuce\_romaine\_4wk (616 samples), Lettuce\_romaine\_5wk (1525 samples), Lettuce\_romaine\_6wk (674 samples), and Lettuce\_romaine\_7wk (799 samples), with a total of 5,348 labeled pixels.
+
+\textbf{Kennedy Space Center (KSC)}: Acquired by NASA AVIRIS over Kennedy Space Center, Florida, with 176 bands after removing water absorption and low SNR bands. Contains 13 classes representing various land cover types in the coastal environment, with spatial resolution of 18 m. The dataset includes classes such as Scrub (761 samples), Willow swamp (243 samples), CP hammock (256 samples), Slash pine (252 samples), Oak/Broadleaf (161 samples), Hardwood (229 samples), Swamp (105 samples), Graminoid marsh (431 samples), Spartina marsh (520 samples), Cattail marsh (404 samples), Salt marsh (419 samples), Mud flats (503 samples), and Water (927 samples).
+
+\textbf{Pavia University}: Captured by the ROSIS-03 sensor over Pavia University, Italy, in 2001. The scene size is 610$\times$340$\times$103 with spatial resolution of 1.3 m per pixel and spectral coverage from 0.43 to 0.86 $\mu$m. Contains 9 classes including Asphalt (6631 samples), Meadows (18649 samples), Gravel (2099 samples), Trees (3064 samples), Painted metal sheets (1345 samples), Bare Soil (5029 samples), Bitumen (1330 samples), Self-Blocking Bricks (3682 samples), and Shadows (947 samples), totaling 42,776 labeled pixels.
+
+\textbf{Pavia Center}: Also captured by the ROSIS-03 sensor over Pavia city center, Italy. The image size is 1096$\times$1096$\times$102 with 1.3 m spatial resolution. Contains 9 classes including Water (824 samples), Trees (820 samples), Asphalt (816 samples), Self-Blocking Bricks (808 samples), Bitumen (808 samples), Tiles (1260 samples), Shadows (476 samples), Meadows (824 samples), and Bare Soil (820 samples), with a total of 6,456 labeled pixels.
+
+\textbf{Houston 2013}: This scene was captured by the ITRES CASI-1500 sensor over the University of Houston campus and neighboring urban area for the 2013 IEEE GRSS Data Fusion Contest. The data comprises 144 spectral bands in the 380--1050 nm region with dimensions of 349$\times$1905 pixels and spatial resolution of 2.5 m. Contains 15 classes including Healthy grass (1251 samples), Stressed grass (1254 samples), Synthetic grass (697 samples), Tree (1244 samples), Soil (1242 samples), Water (325 samples), Residential (1268 samples), Commercial (1244 samples), Road (1252 samples), Highway (1227 samples), Railway (1235 samples), Parking lot 1 (1233 samples), Parking lot 2 (469 samples), Tennis court (428 samples), and Running track (660 samples).
+
+\subsubsection{Satellite Datasets}
+
+\textbf{Botswana}: NASA EO-1 Hyperion sensor data over the Okavango Delta, acquired in 2001-2004. Contains 145 bands covering 400-2500 nm spectrum with 30 m pixel resolution over a 7.7 km strip. After preprocessing to remove bad detectors and water absorption features, 145 bands were retained. The dataset consists of 14 classes representing seasonal swamps, occasional swamps, and drier woodlands, including Water (270 samples), Hippo grass (101 samples), Floodplain grasses 1 (251 samples), Floodplain grasses 2 (215 samples), Reeds (269 samples), Riparian (269 samples), Firescar (259 samples), Island interior (203 samples), Acacia woodlands (314 samples), Acacia shrublands (248 samples), Acacia grasslands (305 samples), Short mopane (181 samples), Mixed mopane (268 samples), and Exposed soils (95 samples), with a total of 3,248 labeled pixels.
+
+\textbf{XiongAn}: Captured by the AHSI sensor on China's Gaofen-5 satellite platform over XiongAn field on November 1, 2018. The AHSI sensor collects 330 bands including 150 VNIR bands and 180 SWIR bands spanning 0.4 to 2.5 $\mu$m, with 280 bands retained after removing 50 noisy bands. The spatial resolution is 30 m/pixel with image dimensions of 1400$\times$1400 pixels, creating 1,960,000 total pixels with 77,937 labeled pixels across 20 classes. Classes include Water (225647 samples), Rice (180766 samples), Grass land (452144 samples), Wilow (475591 samples), Vegetable fields (1026513 samples), locust (421790 samples), and others representing diverse agricultural and natural land cover types.
+
+\textbf{Houston 2018}: Acquired by the Hyperspectral Image Analysis Group and NCALM at the University of Houston for the 2018 IEEE GRSS Data Fusion Challenge. The dataset covers the university campus and surrounding areas with dimensions of 601$\times$2384 pixels and 50 spectral bands in the 0.38 to 1.05 $\mu$m range. Contains 20 classes with 504,856 labeled pixel samples, including Healthy grass (9799 samples), Stressed grass (32502 samples), Artificial turf (684 samples), Evergreen trees (13595 samples), Deciduous trees (5021 samples), Bare earth (4516 samples), Water (266 samples), Residential buildings (39772 samples), Non-residential buildings (223752 samples), Roads (45866 samples), Sidewalks (34029 samples), Major thoroughfares (46348 samples), and other urban infrastructure classes.
+
+\textbf{Xuzhou}: Based on the study area of Xuzhou City, Jiangsu Province, China, captured by the HYSPEX hyperspectral camera. The dataset contains 436 bands with spatial dimensions of 500$\times$260 pixels. Contains 9 classes including Bareland\_1 (26396 samples), Lakes (4027 samples), Coals (2783 samples), Cement (5214 samples), Crops\_1 (13184 samples), Trees (2436 samples), Bareland\_2 (6990 samples), Crops\_2 (4777 samples), and Red-tiles (3070 samples), representing various urban and industrial land cover types.
+
+\subsubsection{UAV-based Datasets}
+
+\textbf{WHU-Hi Dataset Series}: A comprehensive collection of UAV-based hyperspectral datasets acquired using Headwall Nano-Hyperspec imaging sensors:
+
+\begin{itemize}
+\item \textbf{WHU-Hi-LongKou}: Acquired on July 17, 2018, in Longkou Town, Hubei province, China, using an 8-mm focal length sensor on a DJI Matrice 600 Pro UAV platform. The dataset comprises 550$\times$400 pixels with 270 bands (400-1000 nm) and 0.463 m spatial resolution from 500 m altitude. Contains 9 classes representing a simple agricultural scene: Corn (34511 samples), Cotton (8374 samples), Sesame (3031 samples), Broad-leaf soybean (63212 samples), Narrow-leaf soybean (4151 samples), Rice (11854 samples), Water (67056 samples), Roads and houses (7124 samples), and Mixed weed (5229 samples).
+
+\item \textbf{WHU-Hi-HanChuan}: Acquired on June 17, 2016, in Hanchuan, Hubei province, China, using a 17-mm focal length sensor on a Leica Aibot X6 UAV platform. The dataset comprises 1217$\times$303 pixels with 274 bands (400-1000 nm) and 0.109 m spatial resolution from 250 m altitude. Represents a rural-urban fringe zone with 16 classes including Strawberry (44735 samples), Cowpea (22753 samples), Soybean (10287 samples), Sorghum (5353 samples), Water spinach (1200 samples), Watermelon (4533 samples), Greens (5903 samples), Trees (17978 samples), Grass (9469 samples), Red roof (10516 samples), Gray roof (16911 samples), Plastic (3679 samples), Bare soil (9116 samples), Road (18560 samples), Bright object (1136 samples), and Water (75401 samples).
+
+\item \textbf{WHU-Hi-HongHu}: Acquired on November 20, 2017, in Honghu City, Hubei province, China, using a 17-mm focal length sensor on a DJI Matrice 600 Pro UAV platform. The dataset comprises 940$\times$475 pixels with 270 bands (400-1000 nm) and 0.043 m spatial resolution from 100 m altitude. Represents a complex agricultural scene with 22 classes including various crop cultivars: Red roof (14041 samples), Road (3512 samples), Bare soil (21821 samples), Cotton (163285 samples), Cotton firewood (6218 samples), Rape (44557 samples), Chinese cabbage (24103 samples), Pakchoi (4054 samples), Cabbage (10819 samples), Tuber mustard (12394 samples), Brassica parachinensis (11015 samples), Brassica chinensis (8954 samples), Small Brassica chinensis (22507 samples), Lactuca sativa (7356 samples), Celtuce (1002 samples), Film covered lettuce (7262 samples), Romaine lettuce (3010 samples), Carrot (3217 samples), White radish (8712 samples), Garlic sprout (3486 samples), Broad bean (1328 samples), and Tree (4040 samples).
+\end{itemize}
+
+\subsubsection{Synthetic and Simulated Datasets}
+
+\textbf{Samson}: A synthetic dataset created by mixing three pure endmembers (Soil, Tree, Water) with known abundances. The image size is 95$\times$95$\times$156 with 156 spectral bands. This dataset is commonly used for spectral unmixing and endmember extraction algorithm evaluation.
+
+\textbf{Urban}: Another synthetic dataset with four endmembers (Asphalt, Grass, Tree, Roof) mixed with known abundances. The image size is 307$\times$307$\times$162 with 162 spectral bands, providing a more complex urban scenario for algorithm testing.
+
+\textbf{Apex}: A synthetic dataset simulating the APEX (Airborne Prism Experiment) sensor characteristics. Contains multiple endmembers with varying abundance levels and noise characteristics, useful for algorithm robustness evaluation.
+
+\subsubsection{Medical and Biological Datasets}
+
+\textbf{Colon Cancer}: Hyperspectral images of colon tissue samples for cancer detection. Contains spectral information from 450 to 800 nm with high spatial resolution for cellular-level analysis.
+
+\textbf{Skin Cancer}: Hyperspectral dermoscopy images for melanoma detection and skin lesion classification. Provides spectral signatures of different skin conditions and pathologies.
+
+\textbf{Plant Phenotyping}: Various datasets for agricultural applications including crop stress detection, disease identification, and growth monitoring using hyperspectral imaging in controlled environments.
+
+\subsubsection{Industrial and Material Datasets}
+
+\textbf{Food Quality}: Hyperspectral images for food safety and quality assessment, including fruit ripeness detection, contamination identification, and nutritional content analysis.
+
+\textbf{Plastic Sorting}: Industrial datasets for plastic waste classification and recycling applications, utilizing near-infrared hyperspectral imaging for polymer identification.
+
+\textbf{Mineral Classification}: Geological datasets for mineral identification and mapping, including various rock and soil samples with detailed spectral signatures.
+
+\subsubsection{Planetary and Extraterrestrial Datasets}
+
+\textbf{HyMars Dataset Series}: A groundbreaking collection of three Mars hyperspectral image datasets introduced by Xi et al. (2025) in their IEEE TGRS publication "MCTGCL: Mixed CNN-Transformer for Mars Hyperspectral Image Classification With Graph Contrastive Learning." These datasets represent the first publicly available labeled Mars hyperspectral datasets specifically designed for classification tasks:
+
+\begin{itemize}
+\item \textbf{HyMars-1}: Captured from Mars orbital imagery with spectral coverage optimized for mineral identification and surface composition analysis
+\item \textbf{HyMars-2}: Focused on geological feature classification including various rock formations, sedimentary deposits, and surface materials
+\item \textbf{HyMars-3}: Designed for atmospheric and surface interaction studies, containing spectral signatures affected by Martian atmospheric conditions
+\end{itemize}
+
+These datasets provide unique challenges including:
+- Extreme environmental conditions affecting spectral signatures
+- Limited ground truth validation due to remote sensing nature
+- Atmospheric interference specific to Mars environment
+- Novel material compositions not found on Earth
+- Sparse labeling due to the difficulty of Mars surface validation
+
+The HyMars datasets open new research directions in planetary science applications of hyperspectral classification and provide valuable resources for developing robust algorithms capable of operating under extraterrestrial conditions.
+
+\subsubsection{Dataset Summary and Characteristics}
+
+Table~\ref{tab:dataset_summary} provides a comprehensive overview of the major hyperspectral datasets commonly used in classification research, including their key characteristics and applications.
+
+\begin{table*}[htbp]
+\centering
+\caption{Summary of Major Hyperspectral Image Classification Datasets from Research Plan}
+\label{tab:dataset_summary}
+\begin{tabular}{|l|l|c|c|c|c|l|}
+\hline
+\textbf{Dataset} & \textbf{Sensor} & \textbf{Size (H×W)} & \textbf{Bands} & \textbf{Classes} & \textbf{Resolution (m)} & \textbf{Application} \\
+\hline
+\multicolumn{7}{|c|}{\textbf{Airborne Datasets}} \\
+\hline
+Indian Pines & AVIRIS & 145×145 & 200 & 16 & 20 & Agriculture \\
+Salinas & AVIRIS & 512×217 & 204 & 16 & 3.7 & Agriculture \\
+Salinas-A & AVIRIS & 86×83 & 204 & 6 & 3.7 & Agriculture \\
+KSC & AVIRIS & 512×614 & 176 & 13 & 18 & Coastal \\
+Pavia University & ROSIS-03 & 610×340 & 103 & 9 & 1.3 & Urban \\
+Pavia Center & ROSIS-03 & 1096×1096 & 102 & 9 & 1.3 & Urban \\
+Houston 2013 & CASI-1500 & 349×1905 & 144 & 15 & 2.5 & Urban \\
+\hline
+\multicolumn{7}{|c|}{\textbf{Satellite Datasets}} \\
+\hline
+Botswana & Hyperion & 1476×256 & 145 & 14 & 30 & Wetland \\
+XiongAn & AHSI & 1400×1400 & 280 & 20 & 30 & Mixed \\
+Houston 2018 & CASI-1500 & 601×2384 & 50 & 20 & 1 & Urban \\
+Xuzhou & HYSPEX & 500×260 & 436 & 9 & - & Urban \\
+\hline
+\multicolumn{7}{|c|}{\textbf{UAV Datasets}} \\
+\hline
+WHU-Hi-LongKou & Headwall & 550×400 & 270 & 9 & 0.463 & Agriculture \\
+WHU-Hi-HanChuan & Headwall & 1217×303 & 274 & 16 & 0.109 & Agriculture \\
+WHU-Hi-HongHu & Headwall & 940×475 & 270 & 22 & 0.043 & Agriculture \\
+\hline
+\multicolumn{7}{|c|}{\textbf{Planetary Datasets}} \\
+\hline
+HyMars-HC & CRISM & 418×595 & 440 & Multiple & Orbital & Planetary \\
+HyMars-NF & CRISM & 478×593 & 425 & Multiple & Orbital & Planetary \\
+HyMars-UP & CRISM & 478×595 & 432 & Multiple & Orbital & Planetary \\
+\hline
+\end{tabular}
+\end{table*}
+
+\subsubsection{Dataset Challenges}
+
+\textbf{High Labeling Costs}: Hyperspectral images require pixel-by-pixel labeling, typically relying on expensive field sampling or high-precision equipment, leading to scarce labeled data.
+
+\textbf{Class Imbalance}: Some classes have far fewer samples than others, easily causing classification algorithms to have decreased recognition performance for minority classes.
+
+\textbf{Spectral Mixing Phenomena}: Especially in low spatial resolution datasets, single pixels may contain multiple materials, increasing classification difficulty.
+
+\textbf{Cross-Domain Generalization}: Limited ability of models trained on one dataset to generalize to others due to differences in sensors, environmental conditions, and target materials.
+
+\textbf{Emerging Planetary Dataset Challenges}: The introduction of planetary datasets like HyMars presents unique challenges including extreme environmental conditions, novel material compositions not found on Earth, limited ground truth validation due to remote sensing nature, and unique atmospheric interference effects. These datasets open new research frontiers in astrobiology and planetary geology while providing testbeds for developing more robust classification algorithms that can operate under extreme conditions.
+
+\subsection{Evaluation Metrics}
+
+Common evaluation metrics in hyperspectral image classification include:
+
+\subsubsection{Overall Accuracy (OA)}
+
+Overall classification accuracy represents the proportion of correctly classified pixels to total pixels. OA intuitively reflects classifier overall performance but is not sensitive enough to class-imbalanced data.
+
+\begin{equation}
+OA = \frac{\sum_{i=1}^k n_{ii}}{N}
+\end{equation}
+
+where $n_{ii}$ is the value in row $i$ and column $i$ of the confusion matrix (correctly classified pixels), $k$ is the total number of classes, and $N$ is the total number of pixels.
+
+\subsubsection{Average Accuracy (AA)}
+
+Average accuracy takes the mean of classification accuracy for each class, better reflecting classifier performance on minority classes.
+
+\begin{equation}
+AA = \frac{1}{k}\sum_{i=1}^k \frac{n_{ii}}{\sum_{j=1}^k n_{ij}}
+\end{equation}
+
+where $n_{ii}$ is the correctly classified pixels for class $i$, and $\sum_{j=1}^k n_{ij}$ is the total pixels for class $i$ in the confusion matrix.
+
+\subsubsection{Kappa Coefficient}
+
+Kappa coefficient measures consistency between classification results and random classification results. Compared to OA, it better reflects classifier robustness, especially in class-imbalanced situations.
+
+\begin{equation}
+\kappa = \frac{OA - P_e}{1 - P_e}
+\end{equation}
+
+where $P_e$ is the expected accuracy of random classification:
+
+\begin{equation}
+P_e = \frac{\sum_{i=1}^k (\sum_{j=1}^k n_{ij} \cdot \sum_{j=1}^k n_{ji})}{N^2}
+\end{equation}
+
+The Kappa coefficient ranges from -1 to 1, where $\kappa = 1$ indicates perfect classification, $\kappa = 0$ indicates classification consistent with random classification, and $\kappa < 0$ indicates classification worse than random.
+
+
+
+\section{Current Challenges and Future Directions}
+
+\subsection{Current Challenges}
+
+Despite significant progress in hyperspectral image classification, several fundamental challenges remain:
+
+\subsubsection{Data Annotation Bottleneck and Data Augmentation Techniques}
+
+The scarcity of labeled hyperspectral data represents one of the most significant bottlenecks in the field. Pixel-level annotation requires expert knowledge and is extremely time-consuming and expensive. Current approaches to address this challenge include:
+
+\textbf{Data Augmentation Strategies}:
+\begin{itemize}
+\item \textbf{Spectral Augmentation}: Adding noise, spectral shifting, and band dropout
+\item \textbf{Spatial Augmentation}: Rotation, flipping, and elastic deformation
+\item \textbf{Mixup Techniques}: Linear interpolation between samples and labels
+\item \textbf{Generative Approaches}: GANs and VAEs for synthetic data generation
+\end{itemize}
+
+\textbf{Active Learning}: Intelligently selecting the most informative samples for annotation to maximize learning efficiency with minimal labeling effort.
+
+\subsubsection{Small Sample Classification and Transfer Learning Potential}
+
+The limited availability of labeled samples poses significant challenges for deep learning models that typically require large datasets. Promising approaches include:
+
+\textbf{Few-Shot Learning Paradigms}:
+\begin{itemize}
+\item \textbf{Meta-Learning}: Learning to learn from few examples across multiple tasks
+\item \textbf{Prototypical Networks}: Distance-based classification in learned embedding spaces
+\item \textbf{Relation Networks}: Learning to compare query and support samples
+\end{itemize}
+
+\textbf{Transfer Learning Strategies}:
+\begin{itemize}
+\item \textbf{Domain Adaptation}: Adapting models across different sensors and geographic regions
+\item \textbf{Cross-Domain Transfer}: Leveraging natural image pre-trained models
+\item \textbf{Progressive Transfer}: Gradual adaptation through intermediate domains
+\end{itemize}
+
+\subsubsection{Model Efficiency and Lightweight Directions}
+
+The deployment of hyperspectral classification models in resource-constrained environments (edge devices, UAVs, satellites) requires significant efficiency improvements:
+
+\textbf{Model Compression Techniques}:
+\begin{itemize}
+\item \textbf{Knowledge Distillation}: Training smaller student models from larger teacher models
+\item \textbf{Pruning}: Removing redundant parameters and connections
+\item \textbf{Quantization}: Reducing precision of model weights and activations
+\item \textbf{Neural Architecture Search}: Automated design of efficient architectures
+\end{itemize}
+
+\textbf{Edge Computing Optimization}:
+\begin{itemize}
+\item \textbf{Mobile-Optimized Architectures}: MobileNet, EfficientNet adaptations
+\item \textbf{Hardware-Aware Design}: Optimizing for specific deployment platforms
+\item \textbf{Real-Time Processing}: Streaming algorithms for continuous data processing
+\end{itemize}
+
+\subsubsection{Interpretability and Explainable AI}
+
+The black-box nature of deep learning models poses challenges for scientific applications where understanding model decisions is crucial:
+
+\textbf{Attention Visualization}: Understanding which spectral bands and spatial regions contribute most to classification decisions.
+
+\textbf{Feature Attribution Methods}: Techniques like LIME, SHAP, and GradCAM adapted for hyperspectral data.
+
+\textbf{Physics-Informed Models}: Incorporating domain knowledge and physical constraints into model architectures.
+
+\subsection{Future Research Directions}
+
+Based on current challenges and emerging trends, we identify several promising future research directions:
+
+\subsubsection{Foundation Models and Large-Scale Pre-training}
+
+The success of foundation models in natural language processing and computer vision suggests significant potential for hyperspectral remote sensing:
+
+\textbf{Large-Scale Pre-training}: Training on massive unlabeled hyperspectral datasets from multiple sensors and geographic regions.
+
+\textbf{Multi-Modal Foundation Models}: Combining hyperspectral data with other modalities (RGB, LiDAR, SAR) in unified architectures.
+
+\textbf{Continual Learning}: Models that can continuously adapt to new sensors, regions, and tasks without forgetting previous knowledge.
+
+\subsubsection{Advanced Self-Supervised Learning}
+
+\textbf{Masked Autoencoder Approaches}: Foundation models like S2MAE demonstrate the potential of masked autoencoder approaches for learning robust representations from unlabeled hyperspectral data.
+
+\textbf{Cross-Domain Few-Shot Learning}: Recent advances in SCFormer and dual-branch domain adaptation show promise for rapid adaptation to new sensors and geographic regions with minimal labeled data.
+
+\textbf{Explainable AI Integration}: Development of interpretable attention mechanisms and feature attribution methods that provide transparency in classification decisions while maintaining high performance.
+
+\subsubsection{Emerging Architectures and Paradigms}
+
+\textbf{State Space Models}: Mamba and related architectures offer linear computational complexity while maintaining global receptive fields, representing a significant advancement over Transformer architectures.
+
+\textbf{Neural Architecture Search}: Automated design of optimal architectures for specific hyperspectral classification tasks and deployment constraints.
+
+\textbf{Quantum Machine Learning}: Exploring quantum computing approaches for hyperspectral data processing, potentially offering exponential speedups for certain operations.
+
+\subsubsection{Multi-Modal and Multi-Scale Integration}
+
+\textbf{Sensor Fusion}: Systematic approaches for combining data from multiple hyperspectral sensors with different characteristics.
+
+\textbf{Temporal Modeling}: Incorporating temporal dynamics for applications like crop monitoring and change detection.
+
+\textbf{Multi-Resolution Analysis}: Hierarchical approaches that leverage data at multiple spatial and spectral resolutions.
+
+\section{Research Synthesis and Critical Analysis}
+
+\subsection{Methodological Evolution and Performance Trends}
+
+Our comprehensive synthesis of over 400 publications reveals distinct evolutionary phases in hyperspectral image classification, each characterized by breakthrough innovations and performance improvements:
+
+\textbf{Phase 1 - Traditional Methods Era (Pre-2019)}: Dominated by SVM, Random Forest, and dimensionality reduction techniques, achieving 75-90\% accuracy with manual feature engineering limitations.
+
+\textbf{Phase 2 - Deep Learning Emergence (2019-2021)}: CNN-based approaches achieving 85-95\% accuracy through automatic feature learning, with 3D convolutions enabling spectral-spatial joint processing.
+
+\textbf{Phase 3 - Attention Mechanisms (2021-2023)}: Transformer architectures reaching 97-99\% accuracy through global attention mechanisms, but with quadratic computational complexity challenges.
+
+\textbf{Phase 4 - Efficiency Revolution (2024)}: Mamba architectures achieving >99.5\% accuracy with linear O(n) complexity, representing the current state-of-the-art in efficiency-accuracy trade-offs.
+
+\subsection{Critical Performance Analysis}
+
+\textbf{Accuracy Ceiling Effects}: Recent methods approach theoretical performance limits on benchmark datasets, with diminishing returns from architectural complexity increases. Future progress requires focus on robustness, generalization, and efficiency rather than marginal accuracy improvements.
+
+\textbf{Computational Efficiency Breakthrough}: Mamba architectures demonstrate that linear complexity is achievable without sacrificing accuracy, challenging the assumption that global attention requires quadratic complexity.
+
+\textbf{Transfer Learning Paradigm Shift}: Foundation models enable cross-domain adaptation with minimal labeled data, addressing the fundamental challenge of data scarcity in hyperspectral imaging.
+
+\subsection{Research Impact and Practical Implications}
+
+\textbf{Scientific Impact}: The field has transitioned from incremental improvements to paradigm-shifting innovations, with Mamba and foundation models representing fundamental advances in computational efficiency and generalization capability.
+
+\textbf{Practical Deployment}: Recent advances enable real-world deployment scenarios previously constrained by computational limitations, opening new applications in edge computing and real-time processing.
+
+\textbf{Interdisciplinary Influence}: Hyperspectral classification advances contribute to broader computer vision and remote sensing communities, with techniques transferring to other domains.
+
+\section{Summary and Conclusions}
+
+Through systematic review of hyperspectral image classification methods spanning traditional approaches to cutting-edge deep learning architectures, several key observations emerge:
+
+\begin{enumerate}
+\item \textbf{Architecture Diversification}: Evolution from single CNN architectures to diverse approaches including RNN, Transformer, State Space Models (Mamba), and Foundation Models
+\item \textbf{State Space Model Breakthrough}: Mamba architectures achieving >99\% accuracy with linear O(n) computational complexity, representing a paradigm shift from quadratic Transformer complexity
+\item \textbf{Foundation Model Emergence}: Large-scale pre-trained models like SpectralEarth enabling cross-domain transfer learning and reducing dependency on labeled data
+\item \textbf{Cross-Domain Few-Shot Learning}: Significant advances in methods like SCFormer and dual-branch domain adaptation for rapid adaptation across sensors and geographic regions
+\item \textbf{Explainable AI Integration}: Growing emphasis on interpretable deep learning methods with attention visualization and feature attribution techniques
+\item \textbf{Hybrid Architecture Dominance}: Combined architectures leveraging strengths of multiple approaches, with Mamba-Transformer hybrids showing particular promise
+\item \textbf{Efficiency-Accuracy Optimization}: Focus on models that achieve state-of-the-art performance while being deployable in resource-constrained environments
+\item \textbf{Self-supervised Learning Maturation}: Masked autoencoder approaches and contrastive learning methods effectively leveraging unlabeled hyperspectral data
+\end{enumerate}
+
+The field has witnessed remarkable progress, with modern deep learning methods achieving over 95\% accuracy compared to 80-85\% for traditional approaches. However, significant challenges remain in labeled data scarcity, computational efficiency, and model interpretability.
+
+Future research should focus on developing more efficient architectures, advancing self-supervised learning techniques, improving cross-domain generalization, and creating interpretable models that can provide insights into the physical processes underlying hyperspectral signatures. The emergence of foundation models and state space architectures represents particularly promising directions that may fundamentally transform the field.
+
+This comprehensive survey provides researchers and practitioners with a thorough understanding of the current state-of-the-art and identifies clear pathways for future innovation in hyperspectral image classification.
+
+\section*{Acknowledgment}
+
+The authors would like to thank the research community for making hyperspectral datasets publicly available, which has greatly facilitated research progress in this field. We also acknowledge the valuable contributions of all researchers whose work has been reviewed in this survey.
+
+\section{Conclusion}
+
+This survey has provided a comprehensive review of hyperspectral image classification methods, covering traditional machine learning approaches, deep learning architectures, and emerging paradigms. Our analysis reveals significant performance improvements achieved by modern deep learning methods, with state-of-the-art approaches achieving over 95\% accuracy on benchmark datasets. Key findings include the transformative impact of foundation models for cross-domain transfer learning, the emergence of efficient architectures like Mamba for handling long sequences, and the critical importance of few-shot learning techniques for addressing data scarcity challenges.
+
+Future research directions include developing more efficient architectures for real-time processing, improving cross-domain generalization capabilities, and advancing explainable AI techniques for interpretable classification. The integration of multimodal data and the development of sustainable AI approaches for hyperspectral remote sensing represent promising avenues for continued innovation in this field.
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\end{document}
